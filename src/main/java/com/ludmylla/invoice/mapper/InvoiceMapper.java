@@ -19,12 +19,10 @@ public interface InvoiceMapper {
 	@Mapping(target ="user", source = "userCpfDTO")
 	Invoice toInvoice (InvoiceCreateAndListAllDTO source);
 	
-	@Mapping(target ="id", ignore = true)
-	@Mapping(target ="user", source = "userCreateAndListAllDTO")
-	Invoice toInvoice (InvoiceListAllDTO source);
+	@Mapping(target ="userCreateAndListAllDTO", source = "user")
+	InvoiceListAllDTO dtoInvoiceListAllDTO (Invoice source);
 	
-	@Mapping(target ="userCreateAndListAllDTO", source = "use")
 	List<InvoiceListAllDTO> dtoInvoiceListAllDTO(List<Invoice> souce);
 	
-
+	
 }

@@ -13,21 +13,19 @@ import com.ludmylla.invoice.model.dto.UserCreateAndListAllDTO;
 
 @Mapper
 public interface UserMapper {
-	
+
 	UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
-	
+
 	@Mappings({
-		@Mapping(target="id", ignore = true),
-		@Mapping(target="firstName", ignore = true),
-		@Mapping(target="lastName", ignore = true),
-		@Mapping(target="dateOfBirth", ignore = true),
-	})
-	User toUser (UserCpfDTO source);
+		@Mapping(target = "id", ignore = true), 
+		@Mapping(target = "firstName", ignore = true),
+		@Mapping(target = "lastName", ignore = true),
+		@Mapping(target = "dateOfBirth", ignore = true), })
+	User toUser(UserCpfDTO source);
+
+	UserCreateAndListAllDTO dtoUserCreateListAllDTOc(User source);
+
+	List<UserCreateAndListAllDTO> dtoUserCreateAndListAllDTO(List<User> source);
 	
-	@Mapping(target="id", ignore = true)
-	User toUser (UserCreateAndListAllDTO source);
-	
-	
-	List<UserCpfDTO> toUserCpfDto (List<User> source);
-	
+
 }
