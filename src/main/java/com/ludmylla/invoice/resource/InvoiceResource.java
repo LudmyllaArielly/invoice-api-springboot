@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ludmylla.invoice.mapper.InvoiceMapper;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
+import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
 import com.ludmylla.invoice.service.InvoiceService;
 
 
@@ -36,15 +37,15 @@ public class InvoiceResource {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<InvoiceCreateAndListAllDTO>> getAllInvoice(){
+	public ResponseEntity<List<InvoiceListAllDTO>> getAllInvoice(){
 		try {
 			List<Invoice> list = invoiceService.getAllInvoice();
 			
-			List<InvoiceCreateAndListAllDTO> invoiceCreateAndListAllDTO = InvoiceMapper.INSTANCE
-					.toInvoiceCreateAndListAllDTOs(list);
-			return new ResponseEntity<List<InvoiceCreateAndListAllDTO>>(invoiceCreateAndListAllDTO,HttpStatus.OK);
+			List<InvoiceListAllDTO> InvoiceListAllDTO = InvoiceMapper.INSTANCE
+					.dtoInvoiceListAllDTO(list);
+			return new ResponseEntity<List<InvoiceListAllDTO>>(InvoiceListAllDTO,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<List<InvoiceCreateAndListAllDTO>>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<List<InvoiceListAllDTO>>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
