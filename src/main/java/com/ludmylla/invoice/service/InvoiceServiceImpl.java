@@ -1,11 +1,11 @@
 package com.ludmylla.invoice.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ludmylla.invoice.exceptions.InvoiceNotFoundException;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.repository.InvoiceRepository;
@@ -37,8 +37,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 
 	@Override
-	public Optional<Invoice> findById(Long id) {
-		return invoiceRepository.findById(id);
+	public Invoice findById(Long id) {
+		return invoiceRepository.findById(id)
+				.orElseThrow(() -> new InvoiceNotFoundException("Invoice does not exist! "));
 	}
 
 }
