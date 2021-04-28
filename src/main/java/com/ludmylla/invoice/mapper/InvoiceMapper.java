@@ -1,5 +1,7 @@
 package com.ludmylla.invoice.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -15,6 +17,8 @@ public interface InvoiceMapper {
 	@Mapping(target ="id", ignore = true)
 	@Mapping(target ="user", source = "userCpfDTO")
 	Invoice toInvoice (InvoiceCreateAndListAllDTO source);
+	
+	List<Invoice> toInvoice (List<InvoiceCreateAndListAllDTO> souce);
 	
 
 }
