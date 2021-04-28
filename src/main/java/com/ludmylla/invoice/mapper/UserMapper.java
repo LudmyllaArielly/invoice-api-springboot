@@ -1,5 +1,7 @@
 package com.ludmylla.invoice.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -20,4 +22,7 @@ public interface UserMapper {
 		@Mapping(target="dateOfBirth", ignore = true),
 	})
 	User toUser (UserCpfDTO source);
+	
+	List<UserCpfDTO> toUserCpfDto (List<User> source);
+	
 }

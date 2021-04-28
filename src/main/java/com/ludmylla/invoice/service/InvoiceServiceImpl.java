@@ -1,5 +1,7 @@
 package com.ludmylla.invoice.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,11 @@ public class InvoiceServiceImpl implements InvoiceService {
 	private void findUserByCpf(Invoice invoice) {
 		User user = userRepository.findByCpf(invoice.getUser().getCpf());
 		invoice.setUser(user);
+	}
+
+	@Override
+	public List<Invoice> getAllInvoice() {
+		return invoiceRepository.findAll();
 	}
 
 }
