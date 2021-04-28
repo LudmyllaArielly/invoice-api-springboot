@@ -8,6 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
+import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
 
 @Mapper(uses = {UserMapper.class})
 public interface InvoiceMapper {
@@ -18,8 +19,12 @@ public interface InvoiceMapper {
 	@Mapping(target ="user", source = "userCpfDTO")
 	Invoice toInvoice (InvoiceCreateAndListAllDTO source);
 	
-	@Mapping(target ="user", source = "userCpfDTO")
-	List<InvoiceCreateAndListAllDTO> toInvoiceCreateAndListAllDTOs (List<Invoice> souce);
+	@Mapping(target ="id", ignore = true)
+	@Mapping(target ="user", source = "userCreateAndListAllDTO")
+	Invoice toInvoice (InvoiceListAllDTO source);
+	
+	@Mapping(target ="userCreateAndListAllDTO", source = "use")
+	List<InvoiceListAllDTO> dtoInvoiceListAllDTO(List<Invoice> souce);
 	
 
 }
