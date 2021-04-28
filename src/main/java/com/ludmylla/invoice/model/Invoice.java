@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +25,8 @@ public class Invoice implements Serializable{
 	private String companyName;
 	private BigDecimal value;
 	private Date dueDate;
-
+	
+	@Enumerated(EnumType.STRING)
 	private InvoiceStatus status;
 
 	@ManyToOne
