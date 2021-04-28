@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ludmylla.invoice.exceptions.InvoiceNotFoundException;
 import com.ludmylla.invoice.mapper.InvoiceMapper;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
@@ -51,13 +52,13 @@ public class InvoiceResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<InvoiceListAllDTO> findInvoiceById(@PathVariable("id") Long id){
+	public ResponseEntity<InvoiceListAllDTO> findInvoiceById(@PathVariable("id") Long id) throws InvoiceNotFoundException{
 		try {
 			Invoice invoices = invoiceService.findById(id);
 			InvoiceListAllDTO invoiceListAllDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAllDTO(invoices);
 			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
