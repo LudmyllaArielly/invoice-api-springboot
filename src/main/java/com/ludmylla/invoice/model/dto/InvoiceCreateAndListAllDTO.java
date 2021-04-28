@@ -7,10 +7,8 @@ import java.util.Date;
 import com.ludmylla.invoice.model.enums.InvoiceStatus;
 
 public class InvoiceCreateAndListAllDTO implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
 	private String companyName;
 	private BigDecimal value;
 	private Date dueDate;
@@ -18,14 +16,6 @@ public class InvoiceCreateAndListAllDTO implements Serializable {
 	private InvoiceStatus status;
 
 	private UserCpfDTO userCpfDTO;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getCompanyName() {
 		return companyName;
