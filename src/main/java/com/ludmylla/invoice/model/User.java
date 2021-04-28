@@ -1,4 +1,4 @@
-package com.ludmylla.invoice.model.dto;
+package com.ludmylla.invoice.model;
 
 import java.io.Serializable;
 import java.util.Date;
