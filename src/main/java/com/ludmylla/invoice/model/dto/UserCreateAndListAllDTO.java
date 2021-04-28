@@ -3,7 +3,7 @@ package com.ludmylla.invoice.model.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UseCreateAndListAllDTO implements Serializable {
+public class UserCreateAndListAllDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String firstName;

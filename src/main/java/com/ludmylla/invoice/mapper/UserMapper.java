@@ -9,6 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.model.dto.UserCpfDTO;
+import com.ludmylla.invoice.model.dto.UserCreateAndListAllDTO;
 
 @Mapper
 public interface UserMapper {
@@ -22,6 +23,10 @@ public interface UserMapper {
 		@Mapping(target="dateOfBirth", ignore = true),
 	})
 	User toUser (UserCpfDTO source);
+	
+	@Mapping(target="id", ignore = true)
+	User toUser (UserCreateAndListAllDTO source);
+	
 	
 	List<UserCpfDTO> toUserCpfDto (List<User> source);
 	
