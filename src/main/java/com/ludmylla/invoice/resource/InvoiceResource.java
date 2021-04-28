@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,17 @@ public class InvoiceResource {
 			return new ResponseEntity<List<InvoiceListAllDTO>>(InvoiceListAllDTO,HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<List<InvoiceListAllDTO>>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<InvoiceListAllDTO> findInvoiceById(@PathVariable("id") Long id){
+		try {
+			Invoice invoices = invoiceService.findById(id);
+			InvoiceListAllDTO invoiceListAllDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAllDTO(invoices);
+			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
