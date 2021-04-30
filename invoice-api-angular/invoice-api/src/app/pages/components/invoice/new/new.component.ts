@@ -21,12 +21,10 @@ export class NewComponent implements OnInit {
     }
   }
 
-  getStatus(obj: any) { return Object.keys(obj); }
-
-  constructor(private invoiceService: InvoiceService) {
-  }
+  constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
+
   }
 
   save() {
