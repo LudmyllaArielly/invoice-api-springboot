@@ -13,4 +13,6 @@ public interface InvoiceService {
 	Invoice findById(Long id);
 
 	void updateInvoice(Invoice invoice);
+
+	void deleteInvoice(Long id);
 }

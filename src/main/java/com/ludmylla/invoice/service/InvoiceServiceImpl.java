@@ -51,6 +51,14 @@ public class InvoiceServiceImpl implements InvoiceService {
 	
 	}
 	
+	@Override
+	public void deleteInvoice (Long id) {
+		validIfInvoiceExist(id);
+		Optional<Invoice> invoice = invoiceRepository.findById(id);
+		Invoice invoices = invoice.get();
+		invoiceRepository.delete(invoices);
+	}
+	
 	private void validIfInvoiceExist(Long id) {
 		Boolean isInvoiceExist = invoiceRepository.findById(id).isPresent();
 		if(!isInvoiceExist) {

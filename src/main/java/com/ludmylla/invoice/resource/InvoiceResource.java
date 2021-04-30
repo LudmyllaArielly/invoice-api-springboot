@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
 import com.ludmylla.invoice.service.InvoiceService;
 
-
+@CrossOrigin(origins = "")
 @RestController
 @RequestMapping("/invoices")
 public class InvoiceResource {
@@ -73,6 +75,16 @@ public class InvoiceResource {
 			return ResponseEntity.status(HttpStatus.OK).body("Invoice updated successfully! ");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update invoice: " + e.getMessage());
+		}
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteInvoice( @PathVariable("id") Long id){
+		try {
+			invoiceService.deleteInvoice(id);
+			return ResponseEntity.status(HttpStatus.OK).body("Invoice deleted successfully! ");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to delete invoice: " + e.getMessage());
 		}
 	}
 	
