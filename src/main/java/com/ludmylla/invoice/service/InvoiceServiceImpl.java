@@ -42,6 +42,16 @@ public class InvoiceServiceImpl implements InvoiceService {
 		return invoiceRepository.findById(id)
 				.orElseThrow(() -> new InvoiceNotFoundException("Invoice does not exist! "));
 	}
+	
+	@Override
+	public void updateInvoiceStatus(Invoice invoice) {
+		validIfInvoiceExist(invoice.getId());
+		invoice.setDueDate(invoice.getDueDate());
+		invoice.setCompanyName(invoice.getCompanyName());
+		invoice.setUser(invoice.getUser());
+		invoice.setValue(invoice.getValue());
+		invoiceRepository.save(invoice);
+	}
 
 	@Override
 	public void updateInvoice(Invoice invoice) {
