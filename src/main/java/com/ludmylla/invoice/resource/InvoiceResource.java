@@ -58,7 +58,7 @@ public class InvoiceResource {
 			InvoiceListAllDTO invoiceListAllDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAllDTO(invoices);
 			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
