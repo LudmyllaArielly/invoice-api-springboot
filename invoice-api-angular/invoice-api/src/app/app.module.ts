@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListModule } from './pages/components/invoice/list/list.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { NewComponent } from './pages/components/invoice/new/new.component';
+import { NewModule } from './pages/components/invoice/new/new.module';
 
 
 
@@ -15,7 +17,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
   declarations: [
     AppComponent,
     ListComponent,
-    HeaderComponent
+    HeaderComponent,
+    NewComponent
 
   ],
   imports: [
@@ -23,12 +26,14 @@ import { HeaderComponent } from './shared/components/header/header.component';
     NoopAnimationsModule,
     AppRoutingModule,
     ListModule,
-    HttpClientModule
+    HttpClientModule,
+    NewModule
 
   ],
 
   exports: [
-    ListComponent
+    ListComponent,
+    HeaderComponent
 
   ],
   providers: [],

@@ -11,6 +11,8 @@
                     <th scope="col">User Cpf</th>
                     <th scope="col">Name</th>
                     <th scope="col">Date Of Birth</th>
+                    <th scope="col">Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +24,12 @@
                     <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+                    <td class="groupBtn">
+                        <button type="button" class="btn btn-outline-primary">Edit</button>
+                        <button type="button" class="btn btn-outline-info">Change status</button>
+                        <button type="button" class="btn btn-outline-danger">Delete</button>
 
+                    </td>
                 </tr>
 
             </tbody>
