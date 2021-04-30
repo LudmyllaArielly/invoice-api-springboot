@@ -42,4 +42,10 @@ public class InvoiceServiceImpl implements InvoiceService {
 				.orElseThrow(() -> new InvoiceNotFoundException("Invoice does not exist! "));
 	}
 
+	@Override
+	public void updateInvoice(Invoice invoice) {
+		findUserByCpf(invoice);
+		invoiceRepository.save(invoice);
+	}
+
 }

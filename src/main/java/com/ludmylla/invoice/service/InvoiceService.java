@@ -11,4 +11,6 @@ public interface InvoiceService {
 	List<Invoice> getAllInvoice();
 	
 	Invoice findById(Long id);
+	
+	void updateInvoice(Invoice invoice);
 }
