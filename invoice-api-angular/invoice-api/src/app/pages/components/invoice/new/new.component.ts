@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/shared/invoice.service';
 import { newInvoice } from 'src/app/shared/model/newInvoice.model';
 
@@ -21,28 +22,29 @@ export class NewComponent implements OnInit {
     }
   }
 
-  constructor(private invoiceService: InvoiceService) { }
+  constructor(private invoiceService: InvoiceService, private route: Router) { }
 
   ngOnInit(): void {
 
   }
 
   save() {
+    this.route.navigate(['/new']);
     if (this.invoice.id !== undefined) {
       this.invoiceService.updateInvoice(this.invoice).subscribe(res => {
         this.invoice = res;
         console.log(this.invoice = res)
+        alert('update')
       });
     } else {
       this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
         this.invoice = res;
         console.log(this.invoice = res)
+        alert('new')
       });
     }
   }
 
-  edit(invoice: newInvoice) {
-    this.invoice = { ...invoice }
-  }
+
 
 }

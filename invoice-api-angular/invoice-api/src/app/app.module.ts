@@ -33,7 +33,6 @@ import { FormsModule } from '@angular/forms';
   ],
 
   exports: [
-    ListComponent,
     HeaderComponent
 
   ],
