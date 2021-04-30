@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { NewComponent } from './pages/components/invoice/new/new.component';
 import { NewModule } from './pages/components/invoice/new/new.module';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { NewModule } from './pages/components/invoice/new/new.module';
     AppRoutingModule,
     ListModule,
     HttpClientModule,
-    NewModule
+    NewModule,
+    FormsModule
 
   ],
 

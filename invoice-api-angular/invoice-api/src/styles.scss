@@ -2,4 +2,11 @@
 @import "~bootswatch/dist/cosmo/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/cosmo/bootswatch";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
+.title-list {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2.1rem;
+    font-family: Roboto, sans-serif;
+}
