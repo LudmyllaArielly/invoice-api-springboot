@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ludmylla.invoice.exceptions.InvoiceNotFoundException;
 import com.ludmylla.invoice.model.Invoice;
@@ -43,14 +45,23 @@ public class InvoiceServiceImpl implements InvoiceService {
 				.orElseThrow(() -> new InvoiceNotFoundException("Invoice does not exist! "));
 	}
 	
+	@Modifying
+	@Transactional
 	@Override
 	public void updateInvoiceStatus(Invoice invoice) {
 		validIfInvoiceExist(invoice.getId());
-		invoice.setDueDate(invoice.getDueDate());
-		invoice.setCompanyName(invoice.getCompanyName());
-		invoice.setUser(invoice.getUser());
-		invoice.setValue(invoice.getValue());
+		getTheInvoiceData(invoice);
 		invoiceRepository.save(invoice);
+	}
+	
+	private Invoice getTheInvoiceData(Invoice invoice) {
+		Invoice invoiceGetData = findById(invoice.getId());
+		invoice.setUser(invoiceGetData.getUser());
+		invoice.setCompanyName(invoiceGetData.getCompanyName());
+		invoice.setDueDate(invoiceGetData.getDueDate());
+		invoice.setValue(invoiceGetData.getValue());
+		
+		return invoice;
 	}
 
 	@Override

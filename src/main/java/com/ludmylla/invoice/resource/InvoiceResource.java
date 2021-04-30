@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +22,7 @@ import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
+import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 import com.ludmylla.invoice.service.InvoiceService;
 
 @CrossOrigin(origins = "")
@@ -63,6 +65,17 @@ public class InvoiceResource {
 			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@PatchMapping("/status")
+	public ResponseEntity<String> updateInvoiceStatus (@RequestBody InvoiceUpdateStatusDTO updateStatusDTO){
+		try {
+			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(updateStatusDTO);
+			invoiceService.updateInvoiceStatus(invoice);
+			return ResponseEntity.status(HttpStatus.OK).body("Successfully updated invoice status! ");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update invoice status: " + e.getMessage());
 		}
 	}
 	
