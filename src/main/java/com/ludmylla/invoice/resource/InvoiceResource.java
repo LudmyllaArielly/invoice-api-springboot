@@ -25,7 +25,7 @@ import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 import com.ludmylla.invoice.service.InvoiceService;
 
-@CrossOrigin(origins = "")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/invoices")
 public class InvoiceResource {

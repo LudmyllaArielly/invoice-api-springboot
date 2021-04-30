@@ -1,18 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GetAllInvoiceComponent } from './pages/components/get-all-invoice/get-all-invoice.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ListComponent } from './pages/components/invoice/list/list.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
+import { AppRoutingModule } from './app-routing.module';
+import { ListModule } from './pages/components/invoice/list/list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GetAllInvoiceComponent
+    ListComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    NoopAnimationsModule,
+    MatSliderModule,
+    MatTableModule,
+    AppRoutingModule,
+    ListModule
+  ],
+
+  exports: [
+    ListComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]
