@@ -1,6 +1,7 @@
 package com.ludmylla.invoice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,17 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Override
 	public void updateInvoice(Invoice invoice) {
 		findUserByCpf(invoice);
+		validIfInvoiceExist(invoice.getId());
 		invoiceRepository.save(invoice);
+	
 	}
+	
+	private void validIfInvoiceExist(Long id) {
+		Boolean isInvoiceExist = invoiceRepository.findById(id).isPresent();
+		if(!isInvoiceExist) {
+			throw new InvoiceNotFoundException("Invoice does not exist!");
+		}
+	}
+
 
 }
