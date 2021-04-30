@@ -27,4 +27,18 @@ export class InvoiceService {
     return this.http.post<newInvoice>(this.baseUrl, JSON.stringify(invoice), this.httpOptions);
   }
 
+  getInvoiceFindByid(id: number): Observable<getAllInvoice> {
+    return this.http.get<getAllInvoice>(this.baseUrl + '/' + id);
+  }
+
+  updateInvoice(invoice: newInvoice): Observable<newInvoice> {
+    return this.http.put<newInvoice>(this.baseUrl + '/' + invoice.id, JSON.stringify(invoice), this.httpOptions);
+  }
+
+  deleteInvoice(invoice: newInvoice) {
+    return this.http.delete<newInvoice>(this.baseUrl + '/' + invoice.id, this.httpOptions);
+  }
+
+
+
 }

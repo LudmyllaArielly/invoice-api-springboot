@@ -28,10 +28,21 @@ export class NewComponent implements OnInit {
   }
 
   save() {
-    this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
-      this.invoice = res;
-      console.log(this.invoice = res)
-    });
+    if (this.invoice.id !== undefined) {
+      this.invoiceService.updateInvoice(this.invoice).subscribe(res => {
+        this.invoice = res;
+        console.log(this.invoice = res)
+      });
+    } else {
+      this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
+        this.invoice = res;
+        console.log(this.invoice = res)
+      });
+    }
+  }
+
+  edit(invoice: newInvoice) {
+    this.invoice = { ...invoice }
   }
 
 }

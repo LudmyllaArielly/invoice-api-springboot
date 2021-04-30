@@ -19,13 +19,13 @@
                 <tr class="table-light" *ngFor="let invoice of getAllInvoices">
                     <td>{{invoice.companyName}}</td>
                     <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
-                    <td>{{invoice.value}}</td>
+                    <td>{{invoice.value | currency}}</td>
                     <td>{{invoice.status}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
                     <td class="groupBtn">
-                        <button type="button" class="btn btn-outline-primary">Edit</button>
+                        <button type="button" class="btn btn-outline-primary" (click)="edit(invoice)">Edit</button>
                         <button type="button" class="btn btn-outline-info">Change status</button>
                         <button type="button" class="btn btn-outline-danger">Delete</button>
 
