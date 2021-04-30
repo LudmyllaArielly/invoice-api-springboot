@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
+import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 
 @Mapper(uses = {UserMapper.class})
 public interface InvoiceMapper {
@@ -27,6 +29,14 @@ public interface InvoiceMapper {
 	
 	@Mapping(target = "user", source = "userCpfDTO")
 	Invoice toInvoice (InvoiceUpdateDTO source);
+	
+	@Mappings({
+		@Mapping(target = "dueDate", ignore = true),
+		@Mapping(target = "user", ignore = true),
+		@Mapping(target = "value", ignore = true),
+		@Mapping(target = "companyName", ignore = true),
+	})
+	Invoice toInvoice (InvoiceUpdateStatusDTO source);
 
 	
 }
