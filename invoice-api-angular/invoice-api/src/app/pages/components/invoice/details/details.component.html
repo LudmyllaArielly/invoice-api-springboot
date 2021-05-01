@@ -1,11 +1,21 @@
 <div class="container">
     <div class="row">
-        <div class="card border-primary mb-3 mx-auto" style="max-width: 20rem;margin-top: 6rem;">
+        <div class="card border-primary mx-auto" style="max-width: 20rem;margin-top: 6rem;">
             <div class="card-header">Details invoice</div>
-            <div class="card-body">
-                Company Name: <label></label>
+            <div class="card-body col-md-12">
+                Company Name: <label>{{invoice.companyName}}</label><br>
+                DueDate: <label>{{invoice.dueDate | date:'dd/MM/yyyy' }}</label><br>
+                Value: <label>{{invoice.value | currency }}</label><br>
+                Status: <label>{{invoice.status}}</label><br>
+                User cpf: <label>{{invoice.userCreateAndListAllDTO.cpf}}</label><br>
+                Name: <label>{{invoice.userCreateAndListAllDTO.firstName}}
+                    {{invoice.userCreateAndListAllDTO.lastName}}</label><br>
+                DateOfBirth: <label>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</label><br>
 
             </div>
+            <button type="button" class="btn btn-danger">Delete</button>
+
+            <button type="button" class="btn btn-secondary" routerLink="/list">Go to Back</button>
         </div>
 
     </div>

@@ -7,7 +7,7 @@ export interface getAllInvoice {
     userCreateAndListAllDTO: {
         cpf: string;
         dateOfBirth: Date;
-        fistName: string;
+        firstName: string;
         lastName: string;
     }
 }
