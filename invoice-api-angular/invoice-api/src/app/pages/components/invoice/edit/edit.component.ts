@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceService } from 'src/app/shared/invoice.service';
-import { getAllInvoice } from 'src/app/shared/model/invoice.model';
 import { updateInvoice } from 'src/app/shared/model/invoiceupdate.model';
 
 
@@ -16,28 +15,15 @@ export class EditComponent implements OnInit {
 
   invoice: updateInvoice;
 
-  getInvoice: getAllInvoice;
-
   id: string;
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.invoiceService.getInvoiceFindByid(this.id).subscribe(res => {
-      this.getInvoice = {
-        id: `${res.id}`,
-        companyName: `${res.companyName}`,
-        dueDate: new Date,
-        status: `${res.status}`,
-        value: 0,
-        userCreateAndListAllDTO: {
-          cpf: `${res.userCreateAndListAllDTO.cpf}`,
-          dateOfBirth: new Date,
-          fistName: '',
-          lastName: '',
-        }
+    this.id = this.route.snapshot.params['id'];
 
-      }
-    });
+    this.invoiceService.getInvoiceFindByIdWithUserCpf(this.id).subscribe(data => {
+      this.invoice = data;
+    }, error => console.log(error)
+    );
   }
 
   edit() {
