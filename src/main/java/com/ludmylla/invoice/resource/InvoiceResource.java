@@ -21,6 +21,7 @@ import com.ludmylla.invoice.mapper.InvoiceMapper;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
+import com.ludmylla.invoice.model.dto.InvoiceListAndCpfUserDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 import com.ludmylla.invoice.service.InvoiceService;
@@ -65,6 +66,17 @@ public class InvoiceResource {
 			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping("findInvoiceWithUserCpf/{id}")
+	public ResponseEntity<InvoiceListAndCpfUserDTO> findInvoiceWithUserCpf(@PathVariable("id") Long id) throws InvoiceNotFoundException{
+		try {
+			Invoice invoices = invoiceService.findById(id);
+			InvoiceListAndCpfUserDTO InvoiceListAndCpfUserDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAndCpfUserDTO(invoices);
+			return new ResponseEntity<InvoiceListAndCpfUserDTO>(InvoiceListAndCpfUserDTO,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<InvoiceListAndCpfUserDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
