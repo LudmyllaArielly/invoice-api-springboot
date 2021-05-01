@@ -29,22 +29,10 @@ export class NewComponent implements OnInit {
   }
 
   save() {
-    this.route.navigate(['/new']);
-    if (this.invoice.id !== undefined) {
-      /* this.invoiceService.updateInvoice(this.invoice).subscribe(res => {
-         this.invoice = res;
-         console.log(this.invoice = res)
-         alert('update')
-       });*/
-    } else {
-      this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
-        this.invoice = res;
-        console.log(this.invoice = res)
-        alert('new')
-      });
-    }
+    this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
+      this.route.navigate(['/list']);
+      console.log(this.invoice = res)
+    });
   }
-
-
 
 }
