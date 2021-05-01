@@ -33,6 +33,10 @@ export class InvoiceService {
     return this.http.get<getAllInvoice>(this.baseUrl + '/' + id);
   }
 
+  getInvoiceFindByIdWithUserCpf(id: string): Observable<updateInvoice> {
+    return this.http.get<updateInvoice>(this.baseUrl + '/findInvoiceWithUserCpf/' + id);
+  }
+
   updateInvoice(id: string, invoice: updateInvoice): Observable<updateInvoice> {
     return this.http.put<updateInvoice>(this.baseUrl + '/' + id, JSON.stringify(invoice), this.httpOptions);
   }
