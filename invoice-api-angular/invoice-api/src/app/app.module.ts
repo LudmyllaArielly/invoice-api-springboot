@@ -15,6 +15,7 @@ import { EditComponent } from './pages/components/invoice/edit/edit.component';
 import { EditModule } from './pages/components/invoice/edit/edit.module';
 import { DetailsComponent } from './pages/components/invoice/details/details.component';
 import { DetailsModule } from './pages/components/invoice/details/details.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { DetailsModule } from './pages/components/invoice/details/details.module
     NewModule,
     FormsModule,
     EditModule,
-    DetailsModule
+    DetailsModule,
+    ScrollingModule
   ],
 
   exports: [

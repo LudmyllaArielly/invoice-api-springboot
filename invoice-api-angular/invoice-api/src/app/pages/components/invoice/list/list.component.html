@@ -17,31 +17,33 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-light" *ngFor="let invoice of getAllInvoices">
-                    <td>{{invoice.companyName}}</td>
-                    <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
-                    <td>{{invoice.value | currency}}</td>
-                    <td>{{invoice.status}}</td>
-                    <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
-                    <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
-                    <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <div class="table-light example-item" *cdkVirtualFor="let invoice of getAllInvoices">
+                        <td>{{invoice.companyName}}</td>
+                        <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
+                        <td>{{invoice.value | currency}}</td>
+                        <td>{{invoice.status}}</td>
+                        <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
+                        <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}
+                        </td>
+                        <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
 
-                    <td class="groupBtn">
+                        <td class="groupBtn">
 
-                        <button type="button" class="btn btn-outline-primary"
-                            (click)="editInvoice(invoice.id)">Edit</button>
+                            <button type="button" class="btn btn-outline-primary"
+                                (click)="editInvoice(invoice.id)">Edit</button>
 
-                        <button type="button" class="btn btn-outline-info">Change status</button>
-                        <button type="button" class="btn btn-outline-danger"
-                            (click)="deleteInvoice(invoice.id)">Delete</button>
+                            <button type="button" class="btn btn-outline-info">Change status</button>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="deleteInvoice(invoice.id)">Delete</button>
 
-                    </td>
+                        </td>
 
-                    <td>{{invoice.id}} </td>
+                        <td>{{invoice.id}} </td>
 
 
-                </tr>
-
+                    </div>
+                </cdk-virtual-scroll-viewport>
             </tbody>
         </table>
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/shared/invoice.service';
 import { getAllInvoice } from 'src/app/shared/model/invoice.model';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
