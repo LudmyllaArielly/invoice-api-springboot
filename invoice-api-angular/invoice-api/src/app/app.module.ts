@@ -13,6 +13,8 @@ import { NewModule } from './pages/components/invoice/new/new.module';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './pages/components/invoice/edit/edit.component';
 import { EditModule } from './pages/components/invoice/edit/edit.module';
+import { DetailsComponent } from './pages/components/invoice/details/details.component';
+import { DetailsModule } from './pages/components/invoice/details/details.module';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { EditModule } from './pages/components/invoice/edit/edit.module';
     ListComponent,
     HeaderComponent,
     NewComponent,
-    EditComponent
+    EditComponent,
+    DetailsComponent
 
   ],
   imports: [
@@ -32,7 +35,8 @@ import { EditModule } from './pages/components/invoice/edit/edit.module';
     HttpClientModule,
     NewModule,
     FormsModule,
-    EditModule
+    EditModule,
+    DetailsModule
   ],
 
   exports: [
