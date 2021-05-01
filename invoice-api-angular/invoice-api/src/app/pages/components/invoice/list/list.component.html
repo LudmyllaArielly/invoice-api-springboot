@@ -12,6 +12,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Date Of Birth</th>
                     <th scope="col">Actions</th>
+                    <th>teste</th>
 
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
                     <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+
                     <td class="groupBtn">
                         <a routerLink="/edit/{{invoice.id}}">
                             <button type="button" class="btn btn-outline-primary">Edit</button>
@@ -32,9 +34,14 @@
                         <button type="button" class="btn btn-outline-danger">Delete</button>
 
                     </td>
+
+                    <td>{{invoice.id}} </td>
+
+
                 </tr>
 
             </tbody>
         </table>
+
     </div>
 </div>

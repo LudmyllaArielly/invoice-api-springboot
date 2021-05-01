@@ -29,7 +29,7 @@ export class InvoiceService {
     return this.http.post<newInvoice>(this.baseUrl, JSON.stringify(invoice), this.httpOptions);
   }
 
-  getInvoiceFindByid(id: number): Observable<getAllInvoice> {
+  getInvoiceFindByid(id: string): Observable<getAllInvoice> {
     return this.http.get<getAllInvoice>(this.baseUrl + '/' + id);
   }
 
