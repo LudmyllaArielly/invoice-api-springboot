@@ -44,7 +44,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   ],
 
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    ListComponent
 
   ],
   providers: [],
