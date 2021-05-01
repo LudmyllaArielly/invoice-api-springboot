@@ -1,4 +1,5 @@
 export interface updateInvoice {
+    id: string;
     companyName: string;
     dueDate: Date;
     status: string[];
