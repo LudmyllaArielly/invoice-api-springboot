@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { NewComponent } from './pages/components/invoice/new/new.component';
 import { NewModule } from './pages/components/invoice/new/new.module';
 import { FormsModule } from '@angular/forms';
+import { EditComponent } from './pages/components/invoice/edit/edit.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ListComponent,
     HeaderComponent,
-    NewComponent
+    NewComponent,
+    EditComponent
 
   ],
   imports: [
@@ -29,6 +31,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     NewModule,
     FormsModule
+
+
 
   ],
 
