@@ -20,7 +20,6 @@ import com.ludmylla.invoice.exceptions.InvoiceNotFoundException;
 import com.ludmylla.invoice.mapper.InvoiceMapper;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
-import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 import com.ludmylla.invoice.service.InvoiceService;
@@ -45,26 +44,26 @@ public class InvoiceResource {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<InvoiceListAllDTO>> getAllInvoice(){
+	public ResponseEntity<List<Invoice>> getAllInvoice(){
 		try {
 			List<Invoice> list = invoiceService.getAllInvoice();
 			
-			List<InvoiceListAllDTO> InvoiceListAllDTO = InvoiceMapper.INSTANCE
-					.dtoInvoiceListAllDTO(list);
-			return new ResponseEntity<List<InvoiceListAllDTO>>(InvoiceListAllDTO,HttpStatus.OK);
+			/*List<InvoiceListAllDTO> InvoiceListAllDTO = InvoiceMapper.INSTANCE
+					.dtoInvoiceListAllDTO(list);*/
+			return new ResponseEntity<List<Invoice>>(list,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<List<InvoiceListAllDTO>>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<List<Invoice>>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<InvoiceListAllDTO> findInvoiceById(@PathVariable("id") Long id) throws InvoiceNotFoundException{
+	public ResponseEntity<Invoice> findInvoiceById(@PathVariable("id") Long id) throws InvoiceNotFoundException{
 		try {
 			Invoice invoices = invoiceService.findById(id);
-			InvoiceListAllDTO invoiceListAllDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAllDTO(invoices);
-			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
+			//InvoiceListAllDTO invoiceListAllDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAllDTO(invoices);
+			return new ResponseEntity<Invoice>(invoices,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Invoice>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
