@@ -12,6 +12,7 @@ import { NewComponent } from './pages/components/invoice/new/new.component';
 import { NewModule } from './pages/components/invoice/new/new.module';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './pages/components/invoice/edit/edit.component';
+import { EditModule } from './pages/components/invoice/edit/edit.module';
 
 
 @NgModule({
@@ -30,10 +31,8 @@ import { EditComponent } from './pages/components/invoice/edit/edit.component';
     ListModule,
     HttpClientModule,
     NewModule,
-    FormsModule
-
-
-
+    FormsModule,
+    EditModule
   ],
 
   exports: [

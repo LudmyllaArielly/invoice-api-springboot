@@ -1,4 +1,5 @@
 export interface getAllInvoice {
+    id: string;
     companyName: string;
     dueDate: Date;
     status: string

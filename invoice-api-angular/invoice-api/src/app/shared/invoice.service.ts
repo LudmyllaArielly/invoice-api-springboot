@@ -31,8 +31,8 @@ export class InvoiceService {
     return this.http.get<getAllInvoice>(this.baseUrl + '/' + id);
   }
 
-  updateInvoice(invoice: newInvoice): Observable<newInvoice> {
-    return this.http.put<newInvoice>(this.baseUrl + '/' + invoice.id, JSON.stringify(invoice), this.httpOptions);
+  updateInvoice(id: string, invoice: newInvoice): Observable<newInvoice> {
+    return this.http.put<newInvoice>(this.baseUrl + '/' + id, JSON.stringify(invoice), this.httpOptions);
   }
 
   deleteInvoice(invoice: newInvoice) {

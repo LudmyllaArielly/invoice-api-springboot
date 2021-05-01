@@ -1,1 +1,43 @@
-<p>edit works!</p>
+<div class="container">
+    <div class="row">
+        <a routerLink="/list"><i style="font-size: 2rem; " class="bi bi-skip-backward"></i></a>
+        <strong class="title-list mx-auto">Update Invoice</strong>
+        <form class="col-md-12 mt-5">
+            <div class="row">
+                <div class="col">
+                    <label for="companyName">Company name</label>
+                    <input type="text" id="companyName" class="form-control" placeholder="Company Name"
+                        [(ngModel)]="invoice.companyName" name="companyName">
+                </div>
+                <div class="col">
+                    <label for="dueDate">Due date</label>
+                    <input type="date" id="dueDate" class="form-control" placeholder="00/00/0000"
+                        [(ngModel)]="invoice.dueDate" name="dueDate">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="value">Value</label>
+                    <input type="number" id="value" value="value" class="form-control" placeholder="Value"
+                        [(ngModel)]="invoice.value" name="value">
+                </div>
+                <div class="col">
+                    <label for="selectStatus">Status</label>
+                    <select class="custom-select" [(ngModel)]="invoice.status" name="status" id="selectStatus">
+                        <option value='' disabled selected>Selection</option>
+                        <option>PAYABLE</option>
+                        <option> PAID_OUT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="cpf">Cpf User</label>
+                    <input type="number" id="cpf" class="form-control" placeholder="Cpf"
+                        [(ngModel)]="invoice.userCpfDTO.cpf" name="cpf">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success mt-3" (click)="edit()">Save</button>
+        </form>
+    </div>
+</div>

@@ -12,9 +12,18 @@ export class EditComponent implements OnInit {
 
   constructor(private invoiceService: InvoiceService, private route: Router) { }
 
-  id: string;
+  invoice: newInvoice = {
+    id: '',
+    companyName: '',
+    dueDate: new Date,
+    status: [],
+    value: 0,
+    userCpfDTO: {
+      cpf: '',
+    }
+  }
 
-  invoice: newInvoice;
+  id: string;
 
   ngOnInit(): void {
     const navigation = this.route.getCurrentNavigation();
@@ -23,7 +32,9 @@ export class EditComponent implements OnInit {
 
   edit() {
     const invoice = this.invoice?.id || null;
-    this.invoiceService.updateInvoice(this.invoice);
+    this.invoiceService.updateInvoice(this.invoice.id, this.invoice).subscribe(res => {
+      this.invoice = res;
+    });
   }
 
 }
