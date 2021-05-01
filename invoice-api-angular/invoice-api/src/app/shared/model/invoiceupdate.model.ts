@@ -1,5 +1,4 @@
-export interface newInvoice {
-    id: string;
+export interface updateInvoice {
     companyName: string;
     dueDate: Date;
     status: string[];
