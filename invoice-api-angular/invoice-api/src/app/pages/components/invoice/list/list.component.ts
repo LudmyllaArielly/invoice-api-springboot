@@ -27,5 +27,8 @@ export class ListComponent implements OnInit {
     this.route.navigate(['edit', id]);
   }
 
+  deleteInvoice(id: string) {
+    this.route.navigate(['details', id]);
+  }
 
 }
