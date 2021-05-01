@@ -36,4 +36,5 @@ export class EditComponent implements OnInit {
   gotToInvoiceList() {
     this.router.navigate(['/list']);
   }
+
 }
