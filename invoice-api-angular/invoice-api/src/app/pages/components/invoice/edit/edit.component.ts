@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
 
   edit() {
     this.invoiceService.updateInvoice(this.invoice).subscribe(res => {
-      this.gotToInvoiceList();
+      return this.gotToInvoiceList();
     }, error => console.log(error));
   }
 
