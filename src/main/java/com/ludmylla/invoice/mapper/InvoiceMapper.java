@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
 import com.ludmylla.invoice.model.dto.InvoiceListAllDTO;
+import com.ludmylla.invoice.model.dto.InvoiceListAndCpfUserDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 
@@ -26,6 +27,11 @@ public interface InvoiceMapper {
 	InvoiceListAllDTO dtoInvoiceListAllDTO (Invoice source);
 	
 	List<InvoiceListAllDTO> dtoInvoiceListAllDTO(List<Invoice> souce);
+	
+	@Mapping(target ="userCpfDTO", source = "user")
+	InvoiceListAndCpfUserDTO dtoInvoiceListAndCpfUserDTO (Invoice source);
+	
+	List<InvoiceListAndCpfUserDTO>  dtoInvoiceListAndCpfUserDTO(List<Invoice> source);
 	
 	@Mapping(target = "user", source = "userCpfDTO")
 	Invoice toInvoice (InvoiceUpdateDTO source);
