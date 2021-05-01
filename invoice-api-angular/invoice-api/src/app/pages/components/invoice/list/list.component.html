@@ -27,9 +27,10 @@
                     <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
 
                     <td class="groupBtn">
-                        <a routerLink="/edit/{{invoice.id}}">
-                            <button type="button" class="btn btn-outline-primary">Edit</button>
-                        </a>
+
+                        <button type="button" class="btn btn-outline-primary"
+                            (click)="editInvoice(invoice.id)">Edit</button>
+
                         <button type="button" class="btn btn-outline-info">Change status</button>
                         <button type="button" class="btn btn-outline-danger">Delete</button>
 

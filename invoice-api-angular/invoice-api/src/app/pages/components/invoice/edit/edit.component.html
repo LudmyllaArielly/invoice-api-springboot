@@ -2,7 +2,8 @@
     <div class="row">
         <a routerLink="/list"><i style="font-size: 2rem; " class="bi bi-skip-backward"></i></a>
         <strong class="title-list mx-auto">Update Invoice</strong>
-        <form class="col-md-12 mt-5">
+        <form class="col-md-12 mt-5" (ngSubmit)="edit()">
+
             <div class="row">
                 <div class="col">
                     <label for="companyName">Company name</label>
@@ -15,6 +16,7 @@
                         [(ngModel)]="invoice.dueDate" name="dueDate">
                 </div>
             </div>
+
             <div class="row">
                 <div class="col">
                     <label for="value">Value</label>
@@ -30,6 +32,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-6">
                     <label for="cpf">Cpf User</label>
@@ -37,7 +40,7 @@
                         [(ngModel)]="invoice.userCpfDTO.cpf" name="cpf">
                 </div>
             </div>
-            <button type="button" class="btn btn-success mt-3" (click)="edit()">Save</button>
+            <button type="submit" class="btn btn-success mt-3">Save</button>
         </form>
     </div>
 </div>
