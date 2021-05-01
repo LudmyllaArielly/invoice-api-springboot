@@ -11,7 +11,8 @@ import { updateInvoice } from 'src/app/shared/model/invoiceupdate.model';
 })
 export class EditComponent implements OnInit {
 
-  constructor(private invoiceService: InvoiceService, private route: ActivatedRoute) { }
+  constructor(private invoiceService: InvoiceService, private route: ActivatedRoute,
+    private router: Router) { }
 
   invoice: updateInvoice;
 
@@ -28,9 +29,11 @@ export class EditComponent implements OnInit {
 
   edit() {
     this.invoiceService.updateInvoice(this.id, this.invoice).subscribe(res => {
-      this.invoice = res;
-      console.log(this.invoice = res)
-    });
+      this.gotToInvoiceList();
+    }, error => console.log(error));
   }
 
+  gotToInvoiceList() {
+    this.router.navigate(['/list']);
+  }
 }
