@@ -30,9 +30,5 @@ export class ListComponent implements OnInit {
   deleteInvoice(id: string) {
     this.route.navigate(['details', id]);
   }
-  /*
-   this.invoiceService.deleteInvoice(id).subscribe(data => {
-        console.log(data);
-        this.getAllInvoice();
-      });*/
+
 }

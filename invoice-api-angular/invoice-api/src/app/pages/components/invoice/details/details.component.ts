@@ -13,7 +13,7 @@ export class DetailsComponent implements OnInit {
   id: string;
   invoice: getAllInvoice;
 
-  constructor(private invoiceService: InvoiceService, private router: ActivatedRoute) { }
+  constructor(private invoiceService: InvoiceService, private router: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params['id'];
@@ -22,4 +22,11 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  delete(id: string) {
+    this.invoiceService.deleteInvoice(this.id).subscribe(data => {
+      this.route.navigate(['/list']);
+      console.log(data);
+    }, error => console.log(error)
+    );
+  }
 }

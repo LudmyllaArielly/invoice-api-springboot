@@ -1,22 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="card border-primary mx-auto" style="max-width: 20rem;margin-top: 6rem;">
-            <div class="card-header">Details invoice</div>
-            <div class="card-body col-md-12">
-                Company Name: <label>{{invoice.companyName}}</label><br>
-                DueDate: <label>{{invoice.dueDate | date:'dd/MM/yyyy' }}</label><br>
-                Value: <label>{{invoice.value | currency }}</label><br>
-                Status: <label>{{invoice.status}}</label><br>
-                User cpf: <label>{{invoice.userCreateAndListAllDTO.cpf}}</label><br>
-                Name: <label>{{invoice.userCreateAndListAllDTO.firstName}}
-                    {{invoice.userCreateAndListAllDTO.lastName}}</label><br>
-                DateOfBirth: <label>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</label><br>
+        <a routerLink="/list"><i style="font-size: 2rem; " class="bi bi-skip-backward"></i></a>
+        <div class="card mx-auto mt-3" style="width: 40%;">
+            <div class="card-body">
+                <h4 class="card-title">Invoice Details</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Details</h6>
+                Company Name <p class="card-text">{{invoice.companyName}}</p>
+                Due date <p class="card-text">{{invoice.dueDate | date:'dd/MM/yyyy'}}</p>
+                Value <p class="card-text">{{invoice.value | currency }}</p>
+                Status <p class="card-text">{{invoice.status}}</p>
+                User cpf <p class="card-text">{{invoice.userCreateAndListAllDTO.cpf}}</p>
+                Name <p class="card-text">{{invoice.userCreateAndListAllDTO.firstName}}
+                    {{invoice.userCreateAndListAllDTO.lastName}}</p>
+                Date of Birth: <p class="card-text">{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy'}}
+                </p>
+                <button type="button" class="btn btn-danger" style="margin-left: 7rem;"
+                    (click)="delete(invoice.id)">Delete</button>
 
+                <button type="button" class="btn btn-secondary" style="margin-left: 2rem;" routerLink="/list">Go to
+                    Back</button>
             </div>
-            <button type="button" class="btn btn-danger">Delete</button>
-
-            <button type="button" class="btn btn-secondary" routerLink="/list">Go to Back</button>
         </div>
-
     </div>
 </div>
