@@ -19,6 +19,7 @@ export class InvoiceService {
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+
   }
 
   getAllInvoice(): Observable<getAllInvoice[]> {
