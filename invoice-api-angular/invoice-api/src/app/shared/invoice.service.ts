@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { getAllInvoice } from './model/invoice.model';
 import { updateInvoice } from './model/invoiceupdate.model';
 import { newInvoice } from './model/newInvoice.model';
@@ -46,6 +46,20 @@ export class InvoiceService {
     return this.http.delete(this.baseUrl + '/' + id, this.httpOptions);
   }
 
+
+  // manipular erros
+  handlerError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Erro do lado do cliente
+      errorMessage = error.error.message;
+    } else {
+      // Erro do lado do servidor
+      errorMessage = `Code error: ${error.status},` + `message: ${error.message}`;
+    }
+    console.log('Message error' + errorMessage)
+    return throwError(errorMessage);
+  }
 
 
 }
