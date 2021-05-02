@@ -18,7 +18,9 @@ export class InvoiceService {
 
   // Headers
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders(
+      { 'Content-Type': 'application/json', 'responseType': 'text' }
+    )
   }
 
   getAllInvoice(): Observable<getAllInvoice[]> {
@@ -26,7 +28,7 @@ export class InvoiceService {
   }
 
   saveInvoice(invoice: newInvoice): Observable<newInvoice> {
-    return this.http.post<newInvoice>(this.baseUrl, JSON.stringify(invoice), this.httpOptions)
+    return this.http.post<newInvoice>(this.baseUrl, invoice, this.httpOptions)
   }
 
   getInvoiceFindByid(id: string): Observable<getAllInvoice> {
