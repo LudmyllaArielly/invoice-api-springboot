@@ -31,8 +31,7 @@ export class NewComponent implements OnInit {
   save() {
     this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
       this.route.navigate(['/list']);
-      console.log(this.invoice = res)
-    }, error => console.log(error)
+    }
     );
   }
 

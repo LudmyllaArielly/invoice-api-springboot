@@ -23,17 +23,10 @@ export class InvoiceService {
 
   getAllInvoice(): Observable<getAllInvoice[]> {
     return this.http.get<getAllInvoice[]>(this.baseUrl)
-      .pipe(
-        retry(2),
-        catchError(this.handlerError))
   }
 
   saveInvoice(invoice: newInvoice): Observable<newInvoice> {
     return this.http.post<newInvoice>(this.baseUrl, JSON.stringify(invoice), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handlerError))
-
   }
 
   getInvoiceFindByid(id: string): Observable<getAllInvoice> {

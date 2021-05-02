@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <strong class="title-list mx-auto">New Invoice</strong>
-        <form class="col-md-12 mt-5">
+        <form class="col-md-12 mt-5" (ngSubmit)="save()">
             <div class="row">
                 <div class="col">
                     <label for="companyName">Company name</label>
@@ -36,7 +36,7 @@
                         [(ngModel)]="invoice.userCpfDTO.cpf" name="cpf">
                 </div>
             </div>
-            <button type="button" class="btn btn-success mt-3" (click)="save()">Save</button>
+            <button type="submit" class="btn btn-success mt-3">Save</button>
             <button type="button" class="btn btn-secondary mt-3" style="margin-left: 2rem;" routerLink="/list">Go to
                 Back</button>
         </form>
