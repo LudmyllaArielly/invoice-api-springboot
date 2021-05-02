@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { getAllInvoice } from './model/invoice.model';
 import { updateInvoice } from './model/invoiceupdate.model';
 import { newInvoice } from './model/newInvoice.model';
-
+import { retry, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,15 +19,21 @@ export class InvoiceService {
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-
   }
 
   getAllInvoice(): Observable<getAllInvoice[]> {
-    return this.http.get<getAllInvoice[]>(this.baseUrl);
+    return this.http.get<getAllInvoice[]>(this.baseUrl)
+      .pipe(
+        retry(2),
+        catchError(this.handlerError))
   }
 
   saveInvoice(invoice: newInvoice): Observable<newInvoice> {
-    return this.http.post<newInvoice>(this.baseUrl, JSON.stringify(invoice), this.httpOptions);
+    return this.http.post<newInvoice>(this.baseUrl, JSON.stringify(invoice), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handlerError))
+
   }
 
   getInvoiceFindByid(id: string): Observable<getAllInvoice> {
