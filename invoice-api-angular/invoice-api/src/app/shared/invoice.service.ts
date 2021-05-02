@@ -19,7 +19,7 @@ export class InvoiceService {
   // Headers
   httpOptions = {
     headers: new HttpHeaders(
-      { 'Content-Type': 'application/json', 'responseType': 'text' }
+      { 'Content-Type': 'application/json', 'responseType': 'json' }
     )
   }
 

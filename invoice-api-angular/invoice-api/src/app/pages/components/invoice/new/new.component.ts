@@ -22,6 +22,8 @@ export class NewComponent implements OnInit {
     }
   }
 
+  msg = '';
+
   constructor(private invoiceService: InvoiceService, private route: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class NewComponent implements OnInit {
 
   save() {
     this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
+      this.msg = 'created susscessfully!';
       this.route.navigate(['/list']);
     }, error => console.log(error)
     );
