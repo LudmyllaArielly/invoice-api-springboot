@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { getAllInvoice } from './model/invoice.model';
 import { UpdateInvoice } from './model/update-invoice.model';
 import { NewInvoice } from './model/new-invoice.model';
+import { UpdateStatusInvoice } from './model/update-status-invoice.model';
 
 
 @Injectable({
@@ -29,6 +30,10 @@ export class InvoiceService {
 
   getInvoiceFindByIdWithUserCpf(id: string): Observable<UpdateInvoice> {
     return this.http.get<UpdateInvoice>(this.baseUrl + '/findInvoiceWithUserCpf/' + id);
+  }
+
+  updateStatus(invoice: UpdateStatusInvoice): Observable<Object> {
+    return this.http.patch<UpdateStatusInvoice>(this.baseUrl + '/status/' + invoice, { responseType: 'text' });
   }
 
   updateInvoice(invoice: UpdateInvoice): Observable<Object> {
