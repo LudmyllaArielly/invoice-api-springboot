@@ -17,16 +17,23 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params['id'];
-    this.invoiceService.getInvoiceFindByid(this.id).subscribe(data => {
+    this.getTheInvoiceData();
+  }
+
+  getTheInvoiceData() {
+    this.invoiceService.getInvoiceFindById(this.id).subscribe(data => {
       this.invoice = data;
     });
   }
 
-  delete(id: string) {
+  deleteInvoice(id: string) {
     this.invoiceService.deleteInvoice(this.id).subscribe(data => {
-      this.route.navigate(['/list']);
       console.log(data);
-    }, error => console.log(error)
-    );
+      this.onGoToInvoiceList();
+    }, error => console.log(error));
+  }
+
+  onGoToInvoiceList() {
+    this.route.navigate(['/list']);
   }
 }

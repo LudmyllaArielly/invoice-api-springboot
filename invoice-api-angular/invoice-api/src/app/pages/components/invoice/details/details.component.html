@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <a routerLink="/list"><i style="font-size: 2rem; " class="bi bi-skip-backward"></i></a>
-        <div class="card mx-auto" style="width: 40%;margin-top: 5rem;">
+        <div class="card mx-auto" style="width: 40%;margin-top: 2rem;">
             <div class="card-body">
                 <h4 class="card-title">Invoice Details</h4>
                 <h6 class="card-subtitle mb-2 text-muted">Details</h6>
@@ -15,7 +15,7 @@
                 Date of Birth: <p class="card-text">{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy'}}
                 </p>
                 <button type="button" class="btn btn-danger" style="margin-left: 7rem;"
-                    (click)="delete(invoice.id)">Delete</button>
+                    (click)="deleteInvoice(invoice.id)">Delete</button>
 
                 <button type="button" class="btn btn-secondary" style="margin-left: 2rem;" routerLink="/list">Go to
                     Back</button>
