@@ -16,7 +16,8 @@ import { EditModule } from './pages/components/invoice/edit/edit.module';
 import { DetailsComponent } from './pages/components/invoice/details/details.component';
 import { DetailsModule } from './pages/components/invoice/details/details.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { UpdateStatusComponent } from './pages/components/update-status/update-status.component';
+import { UpdateStatusComponent } from './pages/components/invoice/update-status/update-status.component';
+
 
 
 
