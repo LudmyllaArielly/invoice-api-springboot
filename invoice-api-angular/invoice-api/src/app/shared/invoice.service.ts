@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { getAllInvoice } from './model/invoice.model';
-import { updateInvoice } from './model/invoiceupdate.model';
+import { UpdateInvoice } from './model/update-invoice.model';
 import { NewInvoice } from './model/new-invoice.model';
 
 
@@ -34,12 +34,12 @@ export class InvoiceService {
     return this.http.get<getAllInvoice>(this.baseUrl + '/' + id);
   }
 
-  getInvoiceFindByIdWithUserCpf(id: string): Observable<updateInvoice> {
-    return this.http.get<updateInvoice>(this.baseUrl + '/findInvoiceWithUserCpf/' + id);
+  getInvoiceFindByIdWithUserCpf(id: string): Observable<UpdateInvoice> {
+    return this.http.get<UpdateInvoice>(this.baseUrl + '/findInvoiceWithUserCpf/' + id);
   }
 
-  updateInvoice(invoice: updateInvoice): Observable<updateInvoice> {
-    return this.http.put<updateInvoice>(this.baseUrl + '/', JSON.stringify(invoice), this.httpOptions);
+  updateInvoice(invoice: UpdateInvoice): Observable<Object> {
+    return this.http.put(this.baseUrl + '/', invoice, { responseType: 'text' });
   }
 
   deleteInvoice(id: string): Observable<Object> {

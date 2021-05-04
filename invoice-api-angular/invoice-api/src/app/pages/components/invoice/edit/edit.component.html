@@ -1,11 +1,10 @@
 <div class="container">
     <div class="row">
         <strong class="title-list mx-auto">Update Invoice</strong>
-        <form class="col-md-12 mt-5" (ngSubmit)="edit()">
-
+        <form class="col-md-12 mt-5" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col">
-                    <label for="companyName">Company Name</label>
+                    <label for="companyName">Company name</label>
                     <input type="text" id="companyName" class="form-control" placeholder="Company Name"
                         [(ngModel)]="invoice.companyName" name="companyName">
                 </div>
@@ -15,7 +14,6 @@
                         [(ngModel)]="invoice.dueDate" name="dueDate">
                 </div>
             </div>
-
             <div class="row">
                 <div class="col">
                     <label for="value">Value</label>
@@ -31,7 +29,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-6">
                     <label for="cpf">Cpf User</label>

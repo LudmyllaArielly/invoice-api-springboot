@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceService } from 'src/app/shared/invoice.service';
-import { updateInvoice } from 'src/app/shared/model/invoiceupdate.model';
+import { UpdateInvoice } from 'src/app/shared/model/update-invoice.model';
 
 
 @Component({
@@ -14,27 +14,35 @@ export class EditComponent implements OnInit {
   constructor(private invoiceService: InvoiceService, private route: ActivatedRoute,
     private router: Router) { }
 
-  invoice: updateInvoice;
+  invoice: UpdateInvoice;
 
   id: string;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-
-    this.invoiceService.getInvoiceFindByIdWithUserCpf(this.id).subscribe(data => {
-      this.invoice = data;
-    }, error => console.log(error)
-    );
+    this.getTheInvoiceData();
   }
 
-  edit() {
-    this.invoiceService.updateInvoice(this.invoice).subscribe(res => {
-      return this.gotToInvoiceList();
+  getTheInvoiceData() {
+    this.invoiceService.getInvoiceFindByIdWithUserCpf(this.id).subscribe(data => {
+      this.invoice = data;
+    }, error => console.log(error));
+  }
+
+  editInvoice() {
+    this.invoiceService.updateInvoice(this.invoice).subscribe(data => {
+      console.log(data);
+      this.gotToInvoiceList();
     }, error => console.log(error));
   }
 
   gotToInvoiceList() {
     this.router.navigate(['/list']);
+  }
+
+  onSubmit() {
+    console.log(this.invoice)
+    this.editInvoice();
   }
 
 }

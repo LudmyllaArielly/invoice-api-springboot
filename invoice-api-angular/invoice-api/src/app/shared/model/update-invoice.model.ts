@@ -1,4 +1,4 @@
-export interface updateInvoice {
+export class UpdateInvoice {
     id: string;
     companyName: string;
     dueDate: Date;
