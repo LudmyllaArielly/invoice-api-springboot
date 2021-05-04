@@ -32,4 +32,8 @@ export class ListComponent implements OnInit {
     this.route.navigate(['details', id]);
   }
 
+  updateStatusInvoice(id: string) {
+    this.route.navigate(['update-status', id]);
+  }
+
 }

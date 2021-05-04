@@ -33,7 +33,7 @@ export class InvoiceService {
   }
 
   updateStatus(invoice: UpdateStatusInvoice): Observable<Object> {
-    return this.http.patch<UpdateStatusInvoice>(this.baseUrl + '/status/' + invoice, { responseType: 'text' });
+    return this.http.patch(this.baseUrl + '/status/', invoice, { responseType: 'text' });
   }
 
   updateInvoice(invoice: UpdateInvoice): Observable<Object> {

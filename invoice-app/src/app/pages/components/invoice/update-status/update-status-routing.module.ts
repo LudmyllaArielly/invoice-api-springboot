@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateStatusComponent } from './update-status.component';
 
-const routes: Routes = [{ path: 'update-status', component: UpdateStatusComponent }];
+const routes: Routes = [{ path: 'update-status/:id', component: UpdateStatusComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

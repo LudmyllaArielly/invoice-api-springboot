@@ -32,8 +32,8 @@
                             (click)="editInvoice(invoice.id)">Edit</button>
                         <button type="button" class="btn btn-outline-danger"
                             (click)="deleteInvoice(invoice.id)">Delete</button>
-                        <button type="button" class="btn btn-outline-info" routerLink="/update-status">Change
-                            status</button>
+                        <button type="button" class="btn btn-outline-info"
+                            (click)="updateStatusInvoice(invoice.id)">Change status</button>
 
                     </td>
 
