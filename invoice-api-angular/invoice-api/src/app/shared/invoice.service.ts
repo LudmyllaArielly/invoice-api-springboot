@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { getAllInvoice } from './model/invoice.model';
 import { updateInvoice } from './model/invoiceupdate.model';
-import { newInvoice } from './model/newInvoice.model';
-import { retry, catchError } from 'rxjs/operators';
+import { NewInvoice } from './model/new-invoice.model';
 
 
 @Injectable({
@@ -27,8 +26,8 @@ export class InvoiceService {
     return this.http.get<getAllInvoice[]>(this.baseUrl)
   }
 
-  saveInvoice(invoice: newInvoice): Observable<newInvoice> {
-    return this.http.post<newInvoice>(this.baseUrl, invoice, this.httpOptions)
+  saveInvoice(invoice: NewInvoice): Observable<Object> {
+    return this.http.post(this.baseUrl, invoice, { responseType: 'text' });
   }
 
   getInvoiceFindByid(id: string): Observable<getAllInvoice> {

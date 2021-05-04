@@ -1,7 +1,8 @@
+import { CompileMetadataResolver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/shared/invoice.service';
-import { newInvoice } from 'src/app/shared/model/newInvoice.model';
+import { NewInvoice } from 'src/app/shared/model/new-invoice.model';
 
 
 @Component({
@@ -11,8 +12,7 @@ import { newInvoice } from 'src/app/shared/model/newInvoice.model';
 })
 export class NewComponent implements OnInit {
 
-  invoice: newInvoice = {
-    id: '',
+  invoice: NewInvoice = {
     companyName: '',
     dueDate: new Date,
     status: [],
@@ -30,12 +30,20 @@ export class NewComponent implements OnInit {
 
   }
 
-  save() {
-    this.invoiceService.saveInvoice(this.invoice).subscribe(res => {
-      this.msg = 'created susscessfully!';
-      this.route.navigate(['/list']);
-    }, error => console.log(error)
-    );
+  saveInvoice() {
+    this.invoiceService.saveInvoice(this.invoice).subscribe(data => {
+      console.log(data);
+      this.goToInvoiceList();
+    }, error => console.log(error));
+  }
+
+  goToInvoiceList() {
+    this.route.navigate(['/list']);
+  }
+
+  onSubmit() {
+    console.log(this.invoice);
+    this.saveInvoice();
   }
 
 }
