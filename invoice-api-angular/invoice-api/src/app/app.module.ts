@@ -15,15 +15,15 @@ import { EditComponent } from './pages/components/invoice/edit/edit.component';
 import { EditModule } from './pages/components/invoice/edit/edit.module';
 import { DetailsComponent } from './pages/components/invoice/details/details.component';
 import { DetailsModule } from './pages/components/invoice/details/details.module';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
     HeaderComponent,
+    ListComponent,
     NewComponent,
     EditComponent,
     DetailsComponent
@@ -33,14 +33,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     BrowserModule,
     NoopAnimationsModule,
     AppRoutingModule,
-    ListModule,
     HttpClientModule,
+    ListModule,
     NewModule,
-    FormsModule,
     EditModule,
     DetailsModule,
-    InfiniteScrollModule
-
+    FormsModule
   ],
 
   exports: [
