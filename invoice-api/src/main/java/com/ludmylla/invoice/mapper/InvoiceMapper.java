@@ -27,7 +27,7 @@ public interface InvoiceMapper {
 	InvoiceListAllDTO dtoInvoiceListAllDTO (Invoice source);
 	
 	List<InvoiceListAllDTO> dtoInvoiceListAllDTO(List<Invoice> souce);
-	
+
 	@Mapping(target ="userCpfDTO", source = "user")
 	InvoiceListAndCpfUserDTO dtoInvoiceListAndCpfUserDTO (Invoice source);
 	
