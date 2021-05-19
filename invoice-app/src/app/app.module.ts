@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { NewComponent } from './pages/components/invoice/new/new.component';
 import { NewModule } from './pages/components/invoice/new/new.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './pages/components/invoice/edit/edit.component';
 import { EditModule } from './pages/components/invoice/edit/edit.module';
 import { DetailsComponent } from './pages/components/invoice/details/details.component';
@@ -45,7 +45,8 @@ import { UpdateStatusModule } from './pages/components/invoice/update-status/upd
     EditModule,
     UpdateStatusModule,
     DetailsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   exports: [

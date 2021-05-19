@@ -22,8 +22,6 @@ export class NewComponent implements OnInit {
     }
   }
 
-  msg = '';
-
   constructor(private invoiceService: InvoiceService, private route: Router) { }
 
   ngOnInit(): void {
