@@ -18,6 +18,7 @@ import { DetailsModule } from './pages/components/invoice/details/details.module
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { UpdateStatusComponent } from './pages/components/invoice/update-status/update-status.component';
 import { UpdateStatusModule } from './pages/components/invoice/update-status/update-status.module';
+import { NgxPaginationModule  } from 'ngx-pagination';
 
 
 
@@ -46,7 +47,8 @@ import { UpdateStatusModule } from './pages/components/invoice/update-status/upd
     UpdateStatusModule,
     DetailsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule 
   ],
 
   exports: [

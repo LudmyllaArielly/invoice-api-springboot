@@ -14,6 +14,8 @@ export class ListComponent implements OnInit {
 
   getAllInvoices: getAllInvoice[];
 
+  p: number = 1;
+
   ngOnInit(): void {
     this.getAllInvoice();
   }
