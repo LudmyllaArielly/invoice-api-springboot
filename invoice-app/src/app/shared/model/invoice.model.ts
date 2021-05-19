@@ -1,4 +1,4 @@
-export interface getAllInvoice {
+export class getAllInvoice {
     id: string;
     companyName: string;
     dueDate: Date;
@@ -9,5 +9,9 @@ export interface getAllInvoice {
         dateOfBirth: Date;
         firstName: string;
         lastName: string;
+    }
+
+    constructor(values: Object = {}) {
+        Object.assign(this, values);
     }
 }
