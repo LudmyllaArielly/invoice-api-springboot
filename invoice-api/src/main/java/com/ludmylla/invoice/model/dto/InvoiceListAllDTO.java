@@ -2,7 +2,7 @@ package com.ludmylla.invoice.model.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.ludmylla.invoice.model.enums.InvoiceStatus;
 
@@ -11,7 +11,7 @@ public class InvoiceListAllDTO implements Serializable {
 	private Long id;
 	private String companyName;
 	private BigDecimal value;
-	private Date dueDate;
+	private LocalDate dueDate;
 
 	private InvoiceStatus status;
 
@@ -41,11 +41,11 @@ public class InvoiceListAllDTO implements Serializable {
 		this.value = value;
 	}
 
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 

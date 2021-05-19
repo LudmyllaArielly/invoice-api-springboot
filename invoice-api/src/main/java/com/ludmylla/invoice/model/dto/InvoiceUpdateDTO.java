@@ -1,7 +1,7 @@
 package com.ludmylla.invoice.model.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.ludmylla.invoice.model.enums.InvoiceStatus;
 
@@ -10,7 +10,7 @@ public class InvoiceUpdateDTO {
 	private Long id;
 	private String companyName;
 	private BigDecimal value;
-	private Date dueDate;
+	private LocalDate dueDate;
 	private InvoiceStatus status;
 	private UserCpfDTO userCpfDTO;
 
@@ -38,11 +38,11 @@ public class InvoiceUpdateDTO {
 		this.value = value;
 	}
 
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 
