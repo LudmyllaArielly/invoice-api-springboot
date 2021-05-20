@@ -13,7 +13,8 @@ export class ListComponent implements OnInit {
   constructor(private invoiceService: InvoiceService, private route: Router) { }
 
   getAllInvoices: getAllInvoice[];
- 
+  page: number = 1;
+  count: number = 5;
 
   ngOnInit(): void {
     this.getAllInvoice();
