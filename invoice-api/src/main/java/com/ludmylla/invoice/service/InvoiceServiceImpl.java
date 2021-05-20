@@ -1,5 +1,6 @@
 package com.ludmylla.invoice.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,14 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 
 	@Override
-	public Page<Invoice> getAllInvoice(Pageable pageable) {
+	public List<Invoice> getAllInvoice() {
+		List<Invoice> invoice = invoiceRepository.findAll();
+		return invoice;
+	}
+	
+	
+	@Override
+	public Page<Invoice> getAllInvoices(Pageable pageable) {
 		Page<Invoice> invoice = invoiceRepository.findAll(pageable);
 		return invoice;
 	}

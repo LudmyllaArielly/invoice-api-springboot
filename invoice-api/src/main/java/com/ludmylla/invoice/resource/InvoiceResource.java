@@ -1,8 +1,8 @@
 package com.ludmylla.invoice.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,12 +46,14 @@ public class InvoiceResource {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Page<Invoice>> getAllInvoice(Pageable pageable){
+	public ResponseEntity<List<InvoiceListAllDTO>> getAllInvoice(){
 		try {
-			Page<Invoice> list = invoiceService.getAllInvoice(pageable);
-			return new ResponseEntity<Page<Invoice>>(list,HttpStatus.OK);
+			List<Invoice> list = invoiceService.getAllInvoice();
+			List<InvoiceListAllDTO> invoiceListAllDTOs = InvoiceMapper.INSTANCE
+					.dtoInvoiceListAllDTO(list);
+			return new ResponseEntity<List<InvoiceListAllDTO>>(invoiceListAllDTOs,HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Page<Invoice>>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<List<InvoiceListAllDTO>>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	

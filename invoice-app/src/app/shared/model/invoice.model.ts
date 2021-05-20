@@ -1,4 +1,4 @@
-export class getAllInvoice {
+export interface getAllInvoice {
     id: string;
     companyName: string;
     dueDate: Date;
@@ -9,9 +9,5 @@ export class getAllInvoice {
         dateOfBirth: Date;
         firstName: string;
         lastName: string;
-    }
-
-    constructor(values: Object = {}) {
-        Object.assign(this, values);
     }
 }

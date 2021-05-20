@@ -17,9 +17,7 @@
                 </tr>
             </thead>
             <tbody *ngIf="getAllInvoices?.length > 0">
-                <tr class="table-light" *ngFor="let invoice of getAllInvoices | paginate: {itemsPerPage: pageSize,
-                    currentPage: p,
-                    totalItems: count}; let i = index">
+                <tr class="table-light" *ngFor="let invoice of getAllInvoices">
                      
                     <td>{{invoice.companyName}}</td>
                     <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
@@ -44,7 +42,5 @@
 
             </tbody>
         </table>
-        <pagination-controls responsive="true" (pageChange)="p = $event"></pagination-controls>
-
     </div>
 </div>

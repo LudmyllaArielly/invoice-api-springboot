@@ -13,12 +13,12 @@ export class ListComponent implements OnInit {
   constructor(private invoiceService: InvoiceService, private route: Router) { }
 
   getAllInvoices: getAllInvoice[];
-
-  p: number = 1;
+ 
 
   ngOnInit(): void {
     this.getAllInvoice();
   }
+
 
   private getAllInvoice() {
     this.invoiceService.getAllInvoice().subscribe((getAllInvoices: getAllInvoice[]) => {
@@ -26,6 +26,7 @@ export class ListComponent implements OnInit {
       console.log(this.getAllInvoices);
     });
   }
+
 
   editInvoice(id: string) {
     this.route.navigate(['edit', id]);
@@ -38,5 +39,6 @@ export class ListComponent implements OnInit {
   updateStatusInvoice(id: string) {
     this.route.navigate(['update-status', id]);
   }
+
 
 }

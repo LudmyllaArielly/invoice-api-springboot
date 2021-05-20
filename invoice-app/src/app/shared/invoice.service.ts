@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { getAllInvoice } from './model/invoice.model';
@@ -17,7 +17,7 @@ export class InvoiceService {
   constructor(private http: HttpClient) { }
 
   getAllInvoice(): Observable<getAllInvoice[]> {
-    return this.http.get<getAllInvoice[]>(this.baseUrl)
+    return this.http.get<getAllInvoice[]>(this.baseUrl);
   }
 
   saveInvoice(invoice: NewInvoice): Observable<Object> {
