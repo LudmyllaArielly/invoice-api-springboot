@@ -4,6 +4,6 @@ import com.ludmylla.invoice.model.User;
 
 public interface UserService {
 	
-	void createUser(User user);
+	Long createUser(User user);
 
 }
