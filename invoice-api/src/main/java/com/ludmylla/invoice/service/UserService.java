@@ -15,5 +15,7 @@ public interface UserService {
 	User findByCpf(String cpf);
 	
 	void updateUser(User user);
+	
+	void deleteUser(Long id);
 
 }
