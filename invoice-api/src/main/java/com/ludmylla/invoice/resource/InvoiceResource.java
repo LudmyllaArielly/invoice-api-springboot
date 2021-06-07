@@ -2,6 +2,8 @@ package com.ludmylla.invoice.resource;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,13 +37,13 @@ public class InvoiceResource {
 	private InvoiceService invoiceService;
 	
 	@PostMapping
-	public ResponseEntity<String> createInvoice (@RequestBody InvoiceCreateAndListAllDTO invoiceCreateAndListAllDTO){
+	public ResponseEntity<String> createInvoice (@Valid @RequestBody InvoiceCreateAndListAllDTO invoiceCreateAndListAllDTO){
 		try {
 			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(invoiceCreateAndListAllDTO);
 			invoiceService.createInvoice(invoice);
 			return ResponseEntity.status(HttpStatus.CREATED).body("Invoice created successfully. ");
 		}catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to create invoice: " + e.getMessage());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
@@ -91,7 +93,7 @@ public class InvoiceResource {
 	}
 	
 	@PutMapping
-	public ResponseEntity<String> updatedInvoice(@RequestBody InvoiceUpdateDTO invoiceUpdateDTO){
+	public ResponseEntity<String> updatedInvoice(@Valid @RequestBody InvoiceUpdateDTO invoiceUpdateDTO){
 		try {
 			
 			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(invoiceUpdateDTO);
