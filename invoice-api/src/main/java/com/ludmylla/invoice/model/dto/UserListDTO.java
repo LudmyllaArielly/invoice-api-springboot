@@ -9,7 +9,8 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 public class UserListDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String cpf;
@@ -17,6 +18,14 @@ public class UserListDTO implements Serializable {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate dateOfBirth;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -49,5 +58,5 @@ public class UserListDTO implements Serializable {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	
+
 }
