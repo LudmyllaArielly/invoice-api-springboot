@@ -91,10 +91,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	}
 	
 	private void validIfInvoiceExist(Long id) {
-		Boolean isInvoiceExist = invoiceRepository.findById(id).isPresent();
-		if(!isInvoiceExist) {
-			throw new InvoiceNotFoundException("Invoice does not exist!");
-		}
+		findById(id);
 	}
 
 

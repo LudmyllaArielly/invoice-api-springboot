@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -23,20 +21,15 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message = "{required.firstname}")
+
 	private String firstName;
-	
-	@NotBlank(message = "{required.lastname}")
 	private String lastName;
-	
+
 	@Column(unique = true)
-	@NotBlank(message = "{required.cpf}")
 	private String cpf;
-	
+
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@NotNull(message = "{required.dateOfBirth}")
 	private LocalDate dateOfBirth;
 
 	public Long getId() {

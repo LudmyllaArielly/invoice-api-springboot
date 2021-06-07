@@ -22,7 +22,10 @@ public interface UserMapper {
 		@Mapping(target = "lastName", ignore = true),
 		@Mapping(target = "dateOfBirth", ignore = true), })
 	User toUser(UserCpfDTO source);
-
+	
+	@Mapping(target = "id", ignore = true)
+	User toUser (UserCreateAndListAllDTO source);
+	
 	UserCreateAndListAllDTO dtoUserCreateListAllDTOc(User source);
 
 	List<UserCreateAndListAllDTO> dtoUserCreateAndListAllDTO(List<User> source);
