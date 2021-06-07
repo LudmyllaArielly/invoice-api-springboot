@@ -1,7 +1,6 @@
 package com.ludmylla.invoice.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
@@ -54,16 +53,7 @@ public class UserServiceImpl implements UserService {
 		validIfUserExists(user.getId());
 		userRepository.save(user);
 	}
-	
-	@Transactional
-	@Override
-	public void deleteUser(Long id) {
-		validIfUserExists(id);
-		Optional<User> user = userRepository.findById(id);
-		User users = user.get();
-		userRepository.delete(users);
-	}
-	
+
 	private void validIfUserCpfExists(User userCpf) {
 		if(userCpf == null)
 			throw new UserNotFoundException("User does not exist");
@@ -72,5 +62,5 @@ public class UserServiceImpl implements UserService {
 	private void validIfUserExists(Long id) {
 		findById(id);
 	}
-
+	
 }
