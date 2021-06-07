@@ -23,6 +23,10 @@ import com.ludmylla.invoice.model.dto.UserCreateAndListAllDTO;
 import com.ludmylla.invoice.model.dto.UserListAndUpdateDTO;
 import com.ludmylla.invoice.service.UserService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/users")
@@ -32,6 +36,11 @@ public class UserResource {
 	private UserService userService;
 	
 	@PostMapping
+	@ApiOperation(value = "Create a user")
+	@ApiResponses(value = {
+			@ApiResponse(code = 201, message = "Created user successfully"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	public ResponseEntity<String> createUser(@Valid @RequestBody UserCreateAndListAllDTO userCreateAndListAllDTO){
 		try {
 			User user = UserMapper.INSTANCE.toUser(userCreateAndListAllDTO);
@@ -42,6 +51,11 @@ public class UserResource {
 		}
 	}
 	
+	@ApiOperation(value = "Search all users")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Search successfully"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@GetMapping
 	public ResponseEntity<List<UserListAndUpdateDTO>> getAllUsers(){
 		try {
@@ -53,6 +67,11 @@ public class UserResource {
 		}
 	}
 	
+	@ApiOperation(value = "Find the user by id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "find the user successfully"),
+			@ApiResponse(code = 404, message = "User not found")
+	})
 	@GetMapping("/{id}")
 	public ResponseEntity<UserListAndUpdateDTO> findById(@PathVariable("id") Long id){
 		try {
@@ -66,6 +85,11 @@ public class UserResource {
 		}
 	}
 	
+	@ApiOperation(value = "Find the user by cpf")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "find the user successfully"),
+			@ApiResponse(code = 404, message = "User not found")
+	})
 	@GetMapping("/findCpf/{cpf}")
 	public ResponseEntity<UserListAndUpdateDTO> findByCpf(@PathVariable("cpf") String cpf){
 		try {
@@ -79,6 +103,11 @@ public class UserResource {
 		}
 	}
 	
+	@ApiOperation(value = "Updated the user")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Updated user successfully"),
+			@ApiResponse(code = 404, message = "An exception was raised")
+	})
 	@PutMapping
 	public ResponseEntity<String> updateUser(@Valid @RequestBody UserListAndUpdateDTO userListAndUpdateDTO){
 		try {

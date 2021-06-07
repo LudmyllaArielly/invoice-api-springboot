@@ -28,6 +28,10 @@ import com.ludmylla.invoice.model.dto.InvoiceUpdateDTO;
 import com.ludmylla.invoice.model.dto.InvoiceUpdateStatusDTO;
 import com.ludmylla.invoice.service.InvoiceService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/invoices")
@@ -36,6 +40,11 @@ public class InvoiceResource {
 	@Autowired
 	private InvoiceService invoiceService;
 	
+	@ApiOperation(value = "Create a invoice")
+	@ApiResponses(value = {
+			@ApiResponse(code = 201, message = "Created invoice successfully"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@PostMapping
 	public ResponseEntity<String> createInvoice (@Valid @RequestBody InvoiceCreateAndListAllDTO invoiceCreateAndListAllDTO){
 		try {
@@ -47,6 +56,11 @@ public class InvoiceResource {
 		}
 	}
 	
+	@ApiOperation(value = "Search all invoices")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Search successfully"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@GetMapping
 	public ResponseEntity<List<InvoiceListAllDTO>> getAllInvoice(){
 		try {
@@ -59,6 +73,12 @@ public class InvoiceResource {
 		}
 	}
 	
+	@ApiOperation(value = "Find the invoice by id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "find the invoice successfully"),
+			@ApiResponse(code = 404, message = "Invoice not found"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@GetMapping("/{id}")
 	public ResponseEntity<InvoiceListAllDTO> findInvoiceById(@PathVariable("id") Long id) throws InvoiceNotFoundException{
 		try {
@@ -70,6 +90,12 @@ public class InvoiceResource {
 		}
 	}
 	
+	@ApiOperation(value = "Finds invoice by id and returns all user data")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "find the invoice successfully"),
+			@ApiResponse(code = 404, message = "Invoice not found"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@GetMapping("findInvoiceWithUserCpf/{id}")
 	public ResponseEntity<InvoiceListAndCpfUserDTO> findInvoiceWithUserCpf(@PathVariable("id") Long id) throws InvoiceNotFoundException{
 		try {
@@ -81,6 +107,11 @@ public class InvoiceResource {
 		}
 	}
 	
+	@ApiOperation(value = "Updated status of the invoice")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Updated status invoice successfully"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@PatchMapping("/status")
 	public ResponseEntity<String> updateInvoiceStatus (@Valid @RequestBody InvoiceUpdateStatusDTO updateStatusDTO){
 		try {
@@ -92,6 +123,11 @@ public class InvoiceResource {
 		}
 	}
 	
+	@ApiOperation(value = "Updated the invoice")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Updated invoice successfully"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@PutMapping
 	public ResponseEntity<String> updatedInvoice(@Valid @RequestBody InvoiceUpdateDTO invoiceUpdateDTO){
 		try {
@@ -103,6 +139,12 @@ public class InvoiceResource {
 		}
 	}
 	
+	@ApiOperation(value = "Deleted the invoice")
+	@ApiResponses(value = {
+			@ApiResponse(code = 204, message = "Deleted invoice successfully"),
+			@ApiResponse(code = 404, message = "Invoice not found"),
+			@ApiResponse(code = 400, message = "An exception was raised")
+	})
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteInvoice( @PathVariable("id") Long id){
 		try {
