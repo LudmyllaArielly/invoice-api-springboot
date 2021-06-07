@@ -1,7 +1,7 @@
 package com.ludmylla.invoice.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,13 +18,19 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "{required.firstname}")
 	private String firstName;
+	
+	@NotBlank(message = "{required.lastname}")
 	private String lastName;
 	
 	@Column(unique = true)
 	@NotBlank(message = "{required.cpf}")
 	private String cpf;
-	private Date dateOfBirth;
+	
+	@NotBlank(message = "{required.dateOfBirth}")
+	private LocalDate dateOfBirth;
 
 	public Long getId() {
 		return id;
@@ -58,11 +64,11 @@ public class User implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

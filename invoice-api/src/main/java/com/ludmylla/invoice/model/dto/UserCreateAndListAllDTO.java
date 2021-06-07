@@ -1,7 +1,8 @@
 package com.ludmylla.invoice.model.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class UserCreateAndListAllDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -9,7 +10,7 @@ public class UserCreateAndListAllDTO implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String cpf;
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	public String getFirstName() {
 		return firstName;
@@ -35,11 +36,11 @@ public class UserCreateAndListAllDTO implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
