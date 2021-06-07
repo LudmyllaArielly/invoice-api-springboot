@@ -9,5 +9,9 @@ public interface UserService {
 	Long createUser(User user);
 	
 	List<User> getAllUsers();
+	
+	User findById(Long id);
+	
+	User findByCpf(String cpf);
 
 }

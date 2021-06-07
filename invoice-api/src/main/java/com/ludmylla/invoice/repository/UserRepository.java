@@ -11,4 +11,5 @@ import com.ludmylla.invoice.model.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 	
 	User findByCpf (String cpf);
+	
 }

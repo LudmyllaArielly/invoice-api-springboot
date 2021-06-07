@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ludmylla.invoice.exceptions.UserNotFoundException;
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.repository.UserRepository;
 
@@ -25,6 +26,24 @@ public class UserServiceImpl implements UserService {
 		List<User> list = userRepository.findAll();
 		return list;
 	}
+
+	@Override
+	public User findById(Long id) {
+		return userRepository.findById(id)
+				.orElseThrow(() -> new UserNotFoundException("{message.userNotFound}"));		
+	}
 	
+	@Override
+	public User findByCpf(String cpf) {
+		validIfUserCpfExists(cpf);
+		return userRepository.findByCpf(cpf);
+	}
+	
+	private void validIfUserCpfExists(String cpf) {
+		Boolean userCpfExists = cpf == null;
+		if(userCpfExists) {
+			throw new UserNotFoundException("{message.userNotFound}");
+		}
+	}
 
 }
