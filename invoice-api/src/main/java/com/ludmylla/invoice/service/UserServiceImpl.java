@@ -30,20 +30,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(Long id) {
 		return userRepository.findById(id)
-				.orElseThrow(() -> new UserNotFoundException("{message.userNotFound}"));		
+				.orElseThrow(() -> new UserNotFoundException("User does not exist"));		
 	}
 	
 	@Override
 	public User findByCpf(String cpf) {
-		validIfUserCpfExists(cpf);
-		return userRepository.findByCpf(cpf);
+		User userCpf = userRepository.findByCpf(cpf);
+		validIfUserCpfExists(userCpf);
+		return userCpf;
 	}
 	
-	private void validIfUserCpfExists(String cpf) {
-		Boolean userCpfExists = cpf == null;
-		if(userCpfExists) {
-			throw new UserNotFoundException("{message.userNotFound}");
-		}
+	private void validIfUserCpfExists(User userCpf) {
+		if(userCpf == null)
+			throw new UserNotFoundException("User does not exist");
 	}
 
 }

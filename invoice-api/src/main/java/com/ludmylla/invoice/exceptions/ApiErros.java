@@ -6,6 +6,10 @@ import java.util.List;
 public class ApiErros {
 
 	private List<String> erros;
+	
+	public ApiErros(UserNotFoundException ex) {
+		this.erros = Arrays.asList(ex.getMessage());
+	}
 
 	public List<String> getErros() {
 		return erros;

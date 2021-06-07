@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ludmylla.invoice.exceptions.UserNotFoundException;
 import com.ludmylla.invoice.mapper.UserMapper;
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.model.dto.UserCreateAndListAllDTO;
@@ -55,18 +56,22 @@ public class UserResource {
 			User user = userService.findById(id);
 			UserListDTO userListDTO = UserMapper.INSTANCE.dtoUserListDTO(user);
 			return ResponseEntity.ok(userListDTO);
+		}catch (UserNotFoundException e) {
+			throw new UserNotFoundException("User does not exist");
 		} catch (Exception e) {
 			return new ResponseEntity<UserListDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
-	@GetMapping("/{cpf}")
+	@GetMapping("/findCpf/{cpf}")
 	public ResponseEntity<UserListDTO> findByCpf(@PathVariable("cpf") String cpf){
 		try {
 			User user = userService.findByCpf(cpf);
 			UserListDTO userListDTO = UserMapper.INSTANCE.dtoUserListDTO(user);
 			return ResponseEntity.ok(userListDTO);
-		} catch (Exception e) {
+		} catch (UserNotFoundException e) {
+			throw new UserNotFoundException("User does not exist");
+		}catch (Exception e) {
 			return new ResponseEntity<UserListDTO>(HttpStatus.NOT_FOUND);
 		}
 	}

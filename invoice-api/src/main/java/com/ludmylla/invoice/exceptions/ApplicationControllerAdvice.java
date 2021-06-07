@@ -21,4 +21,10 @@ public class ApplicationControllerAdvice {
 	                .collect(Collectors.toList());
 	        return new ApiErros(errors);
 	}
+	
+	@ExceptionHandler(UserNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ApiErros handleUserNotFoundException(UserNotFoundException ex) {
+		return new ApiErros(ex);
+	}
 }
