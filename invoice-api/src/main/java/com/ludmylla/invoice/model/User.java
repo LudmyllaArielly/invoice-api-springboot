@@ -9,6 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 @Entity
 public class User implements Serializable {
@@ -29,7 +34,9 @@ public class User implements Serializable {
 	@NotBlank(message = "{required.cpf}")
 	private String cpf;
 	
-	@NotBlank(message = "{required.dateOfBirth}")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@NotNull(message = "{required.dateOfBirth}")
 	private LocalDate dateOfBirth;
 
 	public Long getId() {
