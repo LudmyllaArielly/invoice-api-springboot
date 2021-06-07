@@ -85,8 +85,10 @@ public class InvoiceResource {
 			Invoice invoices = invoiceService.findById(id);
 			InvoiceListAllDTO invoiceListAllDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAllDTO(invoices);
 			return new ResponseEntity<InvoiceListAllDTO>(invoiceListAllDTO,HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.NOT_FOUND);
+		} catch (InvoiceNotFoundException e) {
+			throw new InvoiceNotFoundException("Invoice does not exist");
+		}catch (Exception e) {
+			return new ResponseEntity<InvoiceListAllDTO>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -102,7 +104,9 @@ public class InvoiceResource {
 			Invoice invoices = invoiceService.findById(id);
 			InvoiceListAndCpfUserDTO InvoiceListAndCpfUserDTO = InvoiceMapper.INSTANCE.dtoInvoiceListAndCpfUserDTO(invoices);
 			return new ResponseEntity<InvoiceListAndCpfUserDTO>(InvoiceListAndCpfUserDTO,HttpStatus.OK);
-		} catch (Exception e) {
+		} catch (InvoiceNotFoundException e) {
+			throw new InvoiceNotFoundException("Invoice does not exist");
+		}catch (Exception e) {
 			return new ResponseEntity<InvoiceListAndCpfUserDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
