@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ludmylla.invoice.exceptions.InvoiceNotFoundException;
+import com.ludmylla.invoice.exceptions.UserNotFoundException;
 import com.ludmylla.invoice.mapper.InvoiceMapper;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.dto.InvoiceCreateAndListAllDTO;
@@ -51,6 +52,8 @@ public class InvoiceResource {
 			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(invoiceCreateAndListAllDTO);
 			invoiceService.createInvoice(invoice);
 			return ResponseEntity.status(HttpStatus.CREATED).body("Invoice created successfully. ");
+		}catch (UserNotFoundException e) {
+			throw new UserNotFoundException("User does not exist");
 		}catch (Exception e) {
 			return ResponseEntity.badRequest().build();
 		}
