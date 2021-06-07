@@ -1,5 +1,6 @@
 package com.ludmylla.invoice.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,8 +41,10 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Invoice> getAllInvoice() {
+		List<Invoice> list = new ArrayList<Invoice>();
 		List<Invoice> invoice = invoiceRepository.findAll();
-		return invoice;
+		list.forEach(invoice::add);
+		return list;
 	}
 	
 	@Transactional(readOnly = true)
@@ -66,7 +69,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 		invoice.setCompanyName(invoiceGetData.getCompanyName());
 		invoice.setDueDate(invoiceGetData.getDueDate());
 		invoice.setValue(invoiceGetData.getValue());
-		
 		return invoice;
 	}
 	
@@ -75,7 +77,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 	public void updateInvoice(Invoice invoice) {
 		validationsUpdate(invoice);
 		invoiceRepository.save(invoice);
-	
 	}
 	
 	@Transactional
