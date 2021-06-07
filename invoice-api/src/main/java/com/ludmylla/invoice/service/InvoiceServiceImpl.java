@@ -15,6 +15,7 @@ import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.repository.InvoiceRepository;
 import com.ludmylla.invoice.repository.UserRepository;
 
+
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 	
@@ -105,6 +106,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 		if(user == null) {
 			throw new UserNotFoundException("User does not exist");
 		}
-	}
-
+	}	
+	
 }
