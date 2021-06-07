@@ -82,25 +82,24 @@ public class InvoiceResource {
 	}
 	
 	@PatchMapping("/status")
-	public ResponseEntity<String> updateInvoiceStatus (@RequestBody InvoiceUpdateStatusDTO updateStatusDTO){
+	public ResponseEntity<String> updateInvoiceStatus (@Valid @RequestBody InvoiceUpdateStatusDTO updateStatusDTO){
 		try {
 			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(updateStatusDTO);
 			invoiceService.updateInvoiceStatus(invoice);
 			return ResponseEntity.status(HttpStatus.OK).body("Successfully updated invoice status! ");
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update invoice status: " + e.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
 	
 	@PutMapping
 	public ResponseEntity<String> updatedInvoice(@Valid @RequestBody InvoiceUpdateDTO invoiceUpdateDTO){
 		try {
-			
 			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(invoiceUpdateDTO);
 			invoiceService.updateInvoice(invoice);
 			return ResponseEntity.status(HttpStatus.OK).body("Invoice updated successfully! ");
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update invoice: " + e.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
 	
@@ -108,11 +107,12 @@ public class InvoiceResource {
 	public ResponseEntity<String> deleteInvoice( @PathVariable("id") Long id){
 		try {
 			invoiceService.deleteInvoice(id);
-			return ResponseEntity.status(HttpStatus.OK).body("Invoice deleted successfully! ");
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to delete invoice: " + e.getMessage());
+			return ResponseEntity.noContent().build();
+		} catch (InvoiceNotFoundException e) {
+			throw new InvoiceNotFoundException("Invoice does not exist! ");
+		}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
-	
 	
 }

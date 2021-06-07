@@ -1,6 +1,5 @@
 package com.ludmylla.invoice.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ludmylla.invoice.exceptions.InvoiceNotFoundException;
+import com.ludmylla.invoice.exceptions.UserNotFoundException;
 import com.ludmylla.invoice.model.Invoice;
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.repository.InvoiceRepository;
@@ -35,16 +35,15 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Transactional(readOnly = true)
 	private void findUserByCpf(Invoice invoice) {
 		User user = userRepository.findByCpf(invoice.getUser().getCpf());
+		validIfUserCpfExits(user);
 		invoice.setUser(user);
 	}
 	
 	@Transactional(readOnly = true)
 	@Override
 	public List<Invoice> getAllInvoice() {
-		List<Invoice> list = new ArrayList<Invoice>();
 		List<Invoice> invoice = invoiceRepository.findAll();
-		list.forEach(invoice::add);
-		return list;
+		return invoice;
 	}
 	
 	@Transactional(readOnly = true)
@@ -100,6 +99,12 @@ public class InvoiceServiceImpl implements InvoiceService {
 
 	private void validIfInvoiceExist(Long id) {
 		findById(id);
+	}
+	
+	private void validIfUserCpfExits(User user) {
+		if(user == null) {
+			throw new UserNotFoundException("User does not exist");
+		}
 	}
 
 }

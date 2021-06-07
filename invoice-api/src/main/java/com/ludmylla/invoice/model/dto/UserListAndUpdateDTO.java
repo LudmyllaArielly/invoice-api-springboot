@@ -3,6 +3,9 @@ package com.ludmylla.invoice.model.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -11,12 +14,19 @@ public class UserListAndUpdateDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotBlank(message = "{required.firstname}")
 	private String firstName;
+	
+	@NotBlank(message = "{required.lastname}")
 	private String lastName;
+	
+	@NotBlank(message = "{required.cpf}")
 	private String cpf;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@NotNull(message = "{required.dateOfBirth}")
 	private LocalDate dateOfBirth;
 
 	public Long getId() {
