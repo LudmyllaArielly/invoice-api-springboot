@@ -24,31 +24,34 @@ public class InvoiceServiceImpl implements InvoiceService {
 	
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	@Transactional
 	@Override
 	public void createInvoice(Invoice invoice) {
 		findUserByCpf(invoice);
 		invoiceRepository.save(invoice);
 	}
 	
+	@Transactional(readOnly = true)
 	private void findUserByCpf(Invoice invoice) {
 		User user = userRepository.findByCpf(invoice.getUser().getCpf());
 		invoice.setUser(user);
 	}
-
+	
+	@Transactional(readOnly = true)
 	@Override
 	public List<Invoice> getAllInvoice() {
 		List<Invoice> invoice = invoiceRepository.findAll();
 		return invoice;
 	}
 	
-	
 	@Override
 	public Page<Invoice> getAllInvoices(Pageable pageable) {
 		Page<Invoice> invoice = invoiceRepository.findAll(pageable);
 		return invoice;
 	}
-
+	
+	@Transactional(readOnly = true)
 	@Override
 	public Invoice findById(Long id) {
 		return invoiceRepository.findById(id)
@@ -64,6 +67,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 		invoiceRepository.save(invoice);
 	}
 	
+	@Transactional(readOnly = true)
 	private Invoice getTheInvoiceData(Invoice invoice) {
 		Invoice invoiceGetData = findById(invoice.getId());
 		invoice.setUser(invoiceGetData.getUser());
@@ -73,7 +77,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 		
 		return invoice;
 	}
-
+	
+	@Transactional
 	@Override
 	public void updateInvoice(Invoice invoice) {
 		findUserByCpf(invoice);
@@ -82,6 +87,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	
 	}
 	
+	@Transactional
 	@Override
 	public void deleteInvoice (Long id) {
 		validIfInvoiceExist(id);
