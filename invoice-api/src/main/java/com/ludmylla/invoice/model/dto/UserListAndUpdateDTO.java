@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
-public class UserListDTO implements Serializable {
+public class UserListAndUpdateDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;

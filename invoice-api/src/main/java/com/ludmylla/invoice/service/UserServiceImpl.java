@@ -3,6 +3,7 @@ package com.ludmylla.invoice.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import com.ludmylla.invoice.exceptions.UserNotFoundException;
@@ -40,9 +41,20 @@ public class UserServiceImpl implements UserService {
 		return userCpf;
 	}
 	
+	@Modifying
+	@Override
+	public void updateUser(User user) {
+		validIfUserExists(user.getId());
+		userRepository.save(user);
+	}
+	
 	private void validIfUserCpfExists(User userCpf) {
 		if(userCpf == null)
 			throw new UserNotFoundException("User does not exist");
+	}
+	
+	private void validIfUserExists(Long id) {
+		findById(id);
 	}
 
 }

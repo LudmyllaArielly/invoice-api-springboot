@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ import com.ludmylla.invoice.exceptions.UserNotFoundException;
 import com.ludmylla.invoice.mapper.UserMapper;
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.model.dto.UserCreateAndListAllDTO;
-import com.ludmylla.invoice.model.dto.UserListDTO;
+import com.ludmylla.invoice.model.dto.UserListAndUpdateDTO;
 import com.ludmylla.invoice.service.UserService;
 
 @RestController
@@ -40,41 +41,53 @@ public class UserResource {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<UserListDTO>> getAllUsers(){
+	public ResponseEntity<List<UserListAndUpdateDTO>> getAllUsers(){
 		try {
 			List<User> list = userService.getAllUsers();
-			List<UserListDTO> userListDTO = UserMapper.INSTANCE.dtoUserListDTO(list);
-			return ResponseEntity.ok(userListDTO);
+			List<UserListAndUpdateDTO> userListUpdateDTO = UserMapper.INSTANCE.dtoUserListUpdateDTO(list);
+			return ResponseEntity.ok(userListUpdateDTO);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();
 		}
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<UserListDTO> findById(@PathVariable("id") Long id){
+	public ResponseEntity<UserListAndUpdateDTO> findById(@PathVariable("id") Long id){
 		try {
 			User user = userService.findById(id);
-			UserListDTO userListDTO = UserMapper.INSTANCE.dtoUserListDTO(user);
-			return ResponseEntity.ok(userListDTO);
+			UserListAndUpdateDTO userListUpdateDTO = UserMapper.INSTANCE.dtoUserListUpdateDTO(user);
+			return ResponseEntity.ok(userListUpdateDTO);
 		}catch (UserNotFoundException e) {
 			throw new UserNotFoundException("User does not exist");
 		} catch (Exception e) {
-			return new ResponseEntity<UserListDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<UserListAndUpdateDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@GetMapping("/findCpf/{cpf}")
-	public ResponseEntity<UserListDTO> findByCpf(@PathVariable("cpf") String cpf){
+	public ResponseEntity<UserListAndUpdateDTO> findByCpf(@PathVariable("cpf") String cpf){
 		try {
 			User user = userService.findByCpf(cpf);
-			UserListDTO userListDTO = UserMapper.INSTANCE.dtoUserListDTO(user);
-			return ResponseEntity.ok(userListDTO);
+			UserListAndUpdateDTO userListUpdateDTO = UserMapper.INSTANCE.dtoUserListUpdateDTO(user);
+			return ResponseEntity.ok(userListUpdateDTO);
 		} catch (UserNotFoundException e) {
 			throw new UserNotFoundException("User does not exist");
 		}catch (Exception e) {
-			return new ResponseEntity<UserListDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<UserListAndUpdateDTO>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
+	@PutMapping
+	public ResponseEntity<String> updateUser(@Valid @RequestBody UserListAndUpdateDTO userListAndUpdateDTO){
+		try {
+			User user = UserMapper.INSTANCE.toUser(userListAndUpdateDTO);
+			userService.updateUser(user);
+			return ResponseEntity.ok().build();
+		} catch (UserNotFoundException e) {
+			throw new UserNotFoundException("User does not exist");
+		}catch (Exception e) {
+			return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		}
+	}
 
 }
