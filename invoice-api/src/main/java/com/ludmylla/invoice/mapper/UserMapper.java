@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 import com.ludmylla.invoice.model.User;
 import com.ludmylla.invoice.model.dto.UserCpfDTO;
 import com.ludmylla.invoice.model.dto.UserCreateAndListAllDTO;
+import com.ludmylla.invoice.model.dto.UserListDTO;
 
 @Mapper
 public interface UserMapper {
@@ -29,6 +30,10 @@ public interface UserMapper {
 	UserCreateAndListAllDTO dtoUserCreateListAllDTOc(User source);
 
 	List<UserCreateAndListAllDTO> dtoUserCreateAndListAllDTO(List<User> source);
+	
+	UserListDTO dtoUserListDTO (User source);
+	
+	List<UserListDTO> dtoUserListDTO(List<User> source);
 	
 
 }
