@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,9 +25,10 @@ public class InvoiceServiceImpl implements InvoiceService {
 	
 	@Transactional
 	@Override
-	public void createInvoice(Invoice invoice) {
+	public Long createInvoice(Invoice invoice) {
 		findUserByCpf(invoice);
-		invoiceRepository.save(invoice);
+		Invoice invoiceCreated = invoiceRepository.save(invoice);
+		return invoiceCreated.getId();
 	}
 	
 	@Transactional(readOnly = true)
@@ -45,12 +44,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 		return invoice;
 	}
 	
-	@Override
-	public Page<Invoice> getAllInvoices(Pageable pageable) {
-		Page<Invoice> invoice = invoiceRepository.findAll(pageable);
-		return invoice;
-	}
-	
 	@Transactional(readOnly = true)
 	@Override
 	public Invoice findById(Long id) {
@@ -62,8 +55,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Transactional
 	@Override
 	public void updateInvoiceStatus(Invoice invoice) {
-		validIfInvoiceExist(invoice.getId());
-		getTheInvoiceData(invoice);
+		validationsStatusUpdate(invoice);
 		invoiceRepository.save(invoice);
 	}
 	
@@ -81,8 +73,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Transactional
 	@Override
 	public void updateInvoice(Invoice invoice) {
-		findUserByCpf(invoice);
-		validIfInvoiceExist(invoice.getId());
+		validationsUpdate(invoice);
 		invoiceRepository.save(invoice);
 	
 	}
@@ -96,9 +87,17 @@ public class InvoiceServiceImpl implements InvoiceService {
 		invoiceRepository.delete(invoices);
 	}
 	
+	private void validationsUpdate(Invoice invoice) {
+		findUserByCpf(invoice);
+		validIfInvoiceExist(invoice.getId());
+	}
+	
+	private void validationsStatusUpdate(Invoice invoice) {
+		validIfInvoiceExist(invoice.getId());
+		getTheInvoiceData(invoice);
+	}
+
 	private void validIfInvoiceExist(Long id) {
 		findById(id);
 	}
-
-
 }
