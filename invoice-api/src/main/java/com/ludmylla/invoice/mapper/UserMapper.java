@@ -31,9 +31,9 @@ public interface UserMapper {
 
 	List<UserCreateAndListAllDTO> dtoUserCreateAndListAllDTO(List<User> source);
 	
-	UserListAndUpdateDTO dtoUserListUpdateDTO (User source);
-	
 	User toUser (UserListAndUpdateDTO source);
+	
+	UserListAndUpdateDTO dtoUserListUpdateDTO (User source);
 	
 	List<UserListAndUpdateDTO> dtoUserListUpdateDTO(List<User> source);
 	
