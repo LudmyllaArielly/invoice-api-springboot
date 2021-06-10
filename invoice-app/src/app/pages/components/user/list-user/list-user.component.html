@@ -1,1 +1,44 @@
-<p>list-user works!</p>
+<div class="container">
+    <div class="row">
+        <strong class="title-list mx-auto">User List</strong>
+        <table class="table table-hover" *ngIf="listAllUser">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Cpf</th>
+                    <th scope="col">DateOfBirth</th>
+                    <th scope="col">Actions</th>
+
+
+                </tr>
+            </thead>
+            <tbody *ngIf="listAllUser?.length > 0">
+                <tr class="table-light" *ngFor="let user of listAllUser | paginate: { itemsPerPage: count, currentPage: page }; let i = index ">
+                     
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.cpf}}</td>
+                    <td>{{user.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+                   
+                    <td class="groupBtn">
+                 <!--
+                        <button type="button" class="btn btn-outline-primary"
+                            (click)="editInvoice(invoice.id)"><a ><i class="bi bi-pencil-square"></i></a></button>
+                        <button type="button" class="btn btn-outline-danger"
+                            (click)="deleteInvoice(invoice.id)"><a><i class="bi bi-x-circle-fill"></i></a></button>
+                        <button type="button" class="btn btn-outline-info"
+                            (click)="updateStatusInvoice(invoice.id)">Change status</button>
+                            -->
+
+                    </td>
+
+                </tr>
+
+            </tbody>        
+        </table>
+    </div>
+    <div class="pagination text-right">
+        <pagination-controls (pageChange)="page = $event" previousLabel="Prev" nextLabel="Next" responsive="true"></pagination-controls>
+    </div>
+</div>
