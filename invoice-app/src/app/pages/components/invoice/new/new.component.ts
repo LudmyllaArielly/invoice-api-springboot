@@ -14,9 +14,9 @@ export class NewComponent implements OnInit {
 
   invoice: NewInvoice = {
     companyName: '',
-    dueDate: new Date,
+    dueDate: null,
     status: [],
-    value: 0,
+    value: null,
     userCpfDTO: {
       cpf: '',
     }
