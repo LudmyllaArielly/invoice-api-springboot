@@ -17,6 +17,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { UpdateStatusComponent } from './pages/components/invoice/update-status/update-status.component';
 import { UpdateStatusModule } from './pages/components/invoice/update-status/update-status.module';
 import { NgxPaginationModule  } from 'ngx-pagination';
+import { ListUserComponent } from './pages/components/user/list-user/list-user.component';
+
 
 
 
@@ -30,7 +32,9 @@ import { NgxPaginationModule  } from 'ngx-pagination';
     NewComponent,
     DetailsComponent,
     FooterComponent,
-    UpdateStatusComponent
+    UpdateStatusComponent,
+    ListUserComponent,
+
 
   ],
   imports: [
@@ -44,7 +48,8 @@ import { NgxPaginationModule  } from 'ngx-pagination';
     DetailsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule 
+    NgxPaginationModule ,
+ 
   ],
 
   exports: [
