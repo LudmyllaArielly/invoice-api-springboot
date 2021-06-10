@@ -1,8 +1,8 @@
 import { CompileMetadataResolver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceService } from 'src/app/shared/invoice.service';
-import { NewInvoice } from 'src/app/shared/model/new-invoice.model';
+import { NewInvoice } from 'src/app/shared/model/new-update-invoice.model';
 
 
 @Component({
@@ -13,6 +13,7 @@ import { NewInvoice } from 'src/app/shared/model/new-invoice.model';
 export class NewComponent implements OnInit {
 
   invoice: NewInvoice = {
+    id: null,
     companyName: '',
     dueDate: null,
     status: [],
@@ -22,19 +23,33 @@ export class NewComponent implements OnInit {
     }
   }
 
-  constructor(private invoiceService: InvoiceService, private route: Router) { }
+  constructor(private invoiceService: InvoiceService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.invoice.id = this.router.snapshot.params['id'];
+    this.getTheInvoiceData();
   }
 
-  saveInvoice() {
-    this.invoiceService.saveInvoice(this.invoice).subscribe(data => {
-      console.log(data);
-      this.goToInvoiceList();
+  getTheInvoiceData() {
+    this.invoiceService.getInvoiceFindByIdWithUserCpf(this.invoice.id).subscribe(data => {
+      this.invoice = data;
     }, error => console.log(error));
   }
 
+  saveInvoice() {
+    if(this.invoice.id != null){
+        this.invoiceService.updateInvoice(this.invoice).subscribe(data => {
+          console.log(data);
+          this.goToInvoiceList();
+        }, error => console.log(error));
+    }else {
+      this.invoiceService.saveInvoice(this.invoice).subscribe(data => {
+      console.log(data);
+      this.goToInvoiceList();
+     }, error => console.log(error));
+   }
+}
+ 
   goToInvoiceList() {
     this.route.navigate(['/list']);
   }

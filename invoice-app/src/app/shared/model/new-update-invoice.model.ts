@@ -1,5 +1,5 @@
-export class UpdateInvoice {
-    id: string;
+export class NewInvoice {
+    id: number;
     companyName: string;
     dueDate: Date;
     status: string[];

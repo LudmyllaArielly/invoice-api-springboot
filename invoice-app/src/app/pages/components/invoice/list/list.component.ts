@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
 
 
   editInvoice(id: string) {
-    this.route.navigate(['edit', id]);
+    this.route.navigate(['new', id]);
   }
 
   deleteInvoice(id: string) {

@@ -11,8 +11,6 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { NewComponent } from './pages/components/invoice/new/new.component';
 import { NewModule } from './pages/components/invoice/new/new.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditComponent } from './pages/components/invoice/edit/edit.component';
-import { EditModule } from './pages/components/invoice/edit/edit.module';
 import { DetailsComponent } from './pages/components/invoice/details/details.component';
 import { DetailsModule } from './pages/components/invoice/details/details.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -30,7 +28,6 @@ import { NgxPaginationModule  } from 'ngx-pagination';
     HeaderComponent,
     ListComponent,
     NewComponent,
-    EditComponent,
     DetailsComponent,
     FooterComponent,
     UpdateStatusComponent
@@ -43,7 +40,6 @@ import { NgxPaginationModule  } from 'ngx-pagination';
     HttpClientModule,
     ListModule,
     NewModule,
-    EditModule,
     UpdateStatusModule,
     DetailsModule,
     FormsModule,

@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <strong class="title-list mx-auto">New Invoice</strong>
+        <strong *ngIf="invoice.id == null"  class="title-list mx-auto">New Invoice</strong>
+        <strong *ngIf="invoice.id != null" class="title-list mx-auto">Update Invoice</strong>
         <form class="col-md-12 mt-5" (ngSubmit)="onSubmit()" #myForm="ngForm">
             <div class="row">
                 <div class="col">
@@ -69,8 +70,8 @@
                         </span>
                 </div>
             </div>   
-            {{invoice.userCpfDTO.cpf}}        
-            <button type="submit" class="btn btn-success mt-3" [disabled]="!myForm.valid" >Save</button>
+            <button *ngIf="invoice.id == null" type="submit" class="btn btn-success mt-3" [disabled]="!myForm.valid" >Save</button>      
+            <button *ngIf="invoice.id != null" type="submit" class="btn btn-success mt-3" [disabled]="!myForm.valid" >Update</button>
             <button type="button" class="btn btn-secondary mt-3" style="margin-left: 2rem;" routerLink="/list">Go to
                 Back</button>
         </form>
