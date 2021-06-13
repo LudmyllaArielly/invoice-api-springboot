@@ -19,6 +19,8 @@ import { UpdateStatusModule } from './pages/components/invoice/update-status/upd
 import { NgxPaginationModule  } from 'ngx-pagination';
 import { ListUserComponent } from './pages/components/user/list-user/list-user.component';
 import { ListUserModule } from './pages/components/user/list-user/list-user.module';
+import { NewUserComponent } from './pages/components/user/new-user/new-user.component';
+import { NewUserModule } from './pages/components/user/new-user/new-user.module';
 
 
 
@@ -35,6 +37,7 @@ import { ListUserModule } from './pages/components/user/list-user/list-user.modu
     FooterComponent,
     UpdateStatusComponent,
     ListUserComponent,
+    NewUserComponent,
 
 
   ],
@@ -50,7 +53,8 @@ import { ListUserModule } from './pages/components/user/list-user/list-user.modu
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule ,
-    ListUserModule
+    ListUserModule,
+    NewUserModule
  
   ],
 
