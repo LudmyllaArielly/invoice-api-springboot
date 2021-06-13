@@ -1,7 +1,10 @@
-.footer.mt-auto .fixed-bottom{
-    background: #566573 !important;
-    padding: 1rem !important;
-    span {
-        color: rgb(90, 81, 81) !important; 
+.footer.mt-auto.fixed-bottom {
+    background-color: #5f6b75 !important;
+    padding: 0.8rem !important;  
+    .container {
+        span {
+            color: white !important; 
+        }
     }
 }
+
