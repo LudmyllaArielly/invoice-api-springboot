@@ -1,6 +1,7 @@
-.footer.mt-auto.py-3 {
-    background: #566573;
+.footer.mt-auto .fixed-bottom{
+    background: #566573 !important;
+    padding: 1rem !important;
     span {
-        color: #fff; 
+        color: rgb(90, 81, 81) !important; 
     }
 }

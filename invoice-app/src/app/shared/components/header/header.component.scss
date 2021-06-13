@@ -1,0 +1,25 @@
+.navbar {
+    background-color: #BFE2E9  !important;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+    color: #272828;
+}
+
+.navbar-brand:hover{
+    text-shadow: 2px 2px 5px #4C4F50  ;
+}
+
+.navbar-nav .mr-auto {
+    li {
+        a {
+          color: #272828;  
+          font-weight: 500;
+          font-size: 1.5rem;
+        }
+    }
+
+}

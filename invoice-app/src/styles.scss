@@ -4,13 +4,47 @@
 @import "~bootswatch/dist/cosmo/bootswatch";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+
 .title-list {
     margin-top: 5rem;
     margin-bottom: 1rem;
     font-size: 2.1rem;
     font-family: Roboto, sans-serif;
+    transition: all 0.3s;
+}
+
+.title-list:hover {
+   color: #161414;
 }
 
 html, body {
     font-family: Ubuntu, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-new{
+    padding: 0;
+    margin: 0;
+
+    button {
+        margin-bottom: 1.2rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s;
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
+
+.btn-new:hover {
+    button {
+        background-color: #009933;
+        opacity: 0.5;
+    }
 }
