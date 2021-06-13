@@ -1,1 +1,67 @@
-<p>new-user works!</p>
+<div class="container">
+    <div class="row">
+        <!--<strong *ngIf="newUser.id == null"  class="title-list mx-auto">New Invoice</strong>
+        *ngIf="invoice.id != null"-->
+        <strong  class="title-list mx-auto">New User</strong>
+        <form class="col-md-12 mt-5" (ngSubmit)="onSubmit()" #myForm="ngForm">
+            <div class="row">
+                <div class="col">
+                    <label for="firstName">Fist Name</label>
+                    <input type="text" id="firstName" class="form-control" placeholder="First Name"
+                        [(ngModel)]="newUser.firstName" name="firstName" maxlength="50" minlength="3"
+                        #name="ngModel" required  [ngClass]="{'is-invalid': !name.valid && (name.dirty || name.touched)}"/>
+                        <span class="invalid-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
+                            <span *ngIf="name.errors.required">
+                              <p> First name is required</p>
+                            </span>
+                        </span>
+                </div>
+                <div class="col">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" class="form-control" placeholder="Last Name"
+                        [(ngModel)]="newUser.lastName" name="lastName" maxlength="50" minlength="3"
+                        #lastName="ngModel" required  [ngClass]="{'is-invalid': !lastName.valid && (lastName.dirty || lastName.touched)}"/>
+                        <span class="invalid-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                            <span *ngIf="lastName.errors.required">
+                              <p> Last name is required</p>
+                            </span>
+                        </span>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="dateOfBirth">Due date</label>
+                    <input type="date" id="dateOfBirth" class="form-control" placeholder="00/00/0000"
+                        [(ngModel)]="newUser.dateOfBirth" name="dateOfBirth" #date="ngModel" required 
+                        [ngClass]="{'is-invalid': !date.valid && (date.dirty || date.touched || date == null)}"/>
+                        <span class="invalid-feedback" *ngIf="date.errors && (date.dirty || date.touched || date == null)">
+                            <span *ngIf="date.errors.required && (invoice.dueDate == null)">
+                              <p> Date of birth is required</p>
+                            </span>
+                        </span>
+                </div>
+                <div class="col-6">
+                    <label for="cpf">Cpf User</label>
+                    <input type="text" id="cpf" class="form-control" placeholder="99999999999"
+                        [(ngModel)]="newUser.cpf" name="cpf" #cpfUser="ngModel" required pattern="[0-9]+$" maxlength="11" minlength="11"
+                        [ngClass]="{'is-invalid': !cpfUser.valid && (cpfUser.dirty || cpfUser.touched || cpfUser < 11)}"/> 
+                        <span class="invalid-feedback" *ngIf="cpfUser.errors && (cpfUser.dirty || cpfUser.touched ||  cpfUser < 11)">
+                            <span *ngIf="cpfUser.errors.required && invoice.userCpfDTO.cpf < 11 ">
+                              <p> Cpf of the client is required</p>
+                              <p>The cpf must have 11 numbers</p>
+                            </span>
+                        </span>
+                </div>
+            </div>
+            <!--
+                *ngIf="invoice.id == null"
+                *ngIf="invoice.id != null"
+                  <button  type="submit" class="btn btn-success mt-3" [disabled]="!myForm.valid" >Update</button>
+            -->
+            <button  type="submit" class="btn btn-success mt-3" [disabled]="!myForm.valid" >Save</button>      
+            <button type="button" class="btn btn-secondary mt-3" style="margin-left: 2rem;" routerLink="/listUser">Go to
+                Back</button>
+        </form>
+    </div>
+</div>
