@@ -32,10 +32,17 @@ export class NewUserComponent implements OnInit {
   }
 
   saveUser(){
-    this.userService.newUser(this.newUser).subscribe(data => {
-      console.log(data);
-      this.goToUserList();
-    }, error => console.log(error));
+    if(this.newUser.id != null){
+      this.userService.updateUser(this.newUser).subscribe(data => {
+        console.log(data);
+        this.goToUserList();
+      }, error => console.log(error));
+    }else {
+      this.userService.newUser(this.newUser).subscribe(data => {
+        console.log(data);
+        this.goToUserList();
+      }, error => console.log(error));
+    }
   }
 
   goToUserList(){

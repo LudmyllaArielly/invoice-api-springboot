@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ListAllUser } from 'src/app/shared/model/user/list-user.model';
 import { UserService } from 'src/app/shared/user.service';
 
@@ -14,7 +15,7 @@ export class ListUserComponent implements OnInit {
   page: number = 1;
   count: number = 5;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private route: Router) { }
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -25,6 +26,10 @@ export class ListUserComponent implements OnInit {
      this.listAllUser = listAllUser;
      console.log(this.getAllUsers);
    });
+  }
+
+  editUser(id: number){
+    this.route.navigate(['newUser', id]);
   }
 
 }

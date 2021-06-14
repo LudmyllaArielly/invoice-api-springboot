@@ -24,4 +24,8 @@ export class UserService {
   getUserFindById(id: number): Observable<NewUser> {
     return this.http.get<NewUser>(`${this.baseUrl}/${id}`);
   }
+
+  updateUser(newUser: NewUser): Observable<Object>{
+    return this.http.put(this.baseUrl, newUser,{ responseType: 'text' });
+  }
 }
