@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewUser } from 'src/app/shared/model/user/new-user.model';
 import { UserService } from 'src/app/shared/user.service';
 
@@ -11,15 +11,24 @@ import { UserService } from 'src/app/shared/user.service';
 export class NewUserComponent implements OnInit {
 
   newUser: NewUser = {
+    id: null,
     cpf: '', 
     dateOfBirth: null,
     firstName: '', 
     lastName: ''
   }
 
-  constructor(private userService: UserService, private route: Router) { }
+  constructor(private userService: UserService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.newUser.id = this.router.snapshot.params['id'];
+    this.getUserFindById();
+  }
+
+  getUserFindById(){
+    this.userService.getUserFindById(this.newUser.id ).subscribe(data => {
+      this.newUser = data;
+    }, error => console.log(error));
   }
 
   saveUser(){

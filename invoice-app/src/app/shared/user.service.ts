@@ -20,4 +20,8 @@ export class UserService {
   newUser(newUser: NewUser): Observable<Object> {
     return this.http.post(this.baseUrl, newUser, { responseType: 'text' });
   }
+
+  getUserFindById(id: number): Observable<NewUser> {
+    return this.http.get<NewUser>(`${this.baseUrl}/${id}`);
+  }
 }
