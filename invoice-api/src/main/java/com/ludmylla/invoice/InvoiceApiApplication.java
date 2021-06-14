@@ -43,5 +43,5 @@ public class InvoiceApiApplication {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
-
+	
 }

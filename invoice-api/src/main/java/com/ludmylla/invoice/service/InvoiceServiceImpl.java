@@ -106,6 +106,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 		if(user == null) {
 			throw new UserNotFoundException("User does not exist");
 		}
-	}	
+	}
+	
 	
 }

@@ -47,7 +47,7 @@ public class InvoiceResource {
 			@ApiResponse(code = 400, message = "An exception was raised")
 	})
 	@PostMapping
-	public ResponseEntity<String> createInvoice (@Valid @RequestBody InvoiceCreateAndListAllDTO invoiceCreateAndListAllDTO){
+	public ResponseEntity<String> createInvoice (@Valid @RequestBody InvoiceCreateAndListAllDTO invoiceCreateAndListAllDTO) {
 		try {
 			Invoice invoice = InvoiceMapper.INSTANCE.toInvoice(invoiceCreateAndListAllDTO);
 			invoiceService.createInvoice(invoice);
