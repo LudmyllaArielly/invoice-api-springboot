@@ -12,15 +12,18 @@
 .navbar-brand:hover{
     text-shadow: 2px 2px 5px #4C4F50 ;
 }
-
-.navbar-nav .mr-auto {
-    .nav-item {
-        .nav-link .style-link {
-          color: #272828 !important;  
-          font-weight: 500 !important;
-          font-size: 1.5rem !important;
-          list-style: none;
+.collapse .navbar-collapse{
+    .navbar-nav .mr-auto {
+        .nav-item {
+            .style-link .nav-link {
+                a {
+                    color: #272828 !important;  
+                    font-weight: 500 !important;
+                    font-size: 1.5rem !important;
+                    list-style: none !important;
+                    text-decoration: none !important;
+                }
+            }
         }
     }
-
 }
