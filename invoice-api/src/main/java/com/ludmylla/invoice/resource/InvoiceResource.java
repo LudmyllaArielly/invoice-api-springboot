@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://invoice-api.netlify.app")
 @RestController
 @RequestMapping("/invoices")
 public class InvoiceResource {
