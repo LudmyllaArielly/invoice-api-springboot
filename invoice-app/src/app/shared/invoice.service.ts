@@ -12,7 +12,7 @@ import { UpdateStatusInvoice } from './model/update-status-invoice.model';
 })
 export class InvoiceService {
 
-  private baseUrl = "http://localhost:8080/invoices";
+  private baseUrl = "https://invoice-api-ludmylla.herokuapp.com/invoices";
 
   constructor(private http: HttpClient) { }
 
