@@ -24,7 +24,6 @@ export class ListComponent implements OnInit {
   private getAllInvoice() {
     this.invoiceService.getAllInvoice().subscribe((getAllInvoices: getAllInvoice[]) => {
       this.getAllInvoices = getAllInvoices;
-      console.log(this.getAllInvoices);
     });
   }
 

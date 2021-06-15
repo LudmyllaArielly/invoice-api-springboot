@@ -38,10 +38,10 @@ export class NewUserComponent implements OnInit {
         this.goToUserList();
       }, error => console.log(error));
     }else {
-      this.userService.newUser(this.newUser).subscribe(data => {
-        console.log(data);
-        this.goToUserList();
-      }, error => console.log(error));
+        this.userService.newUser(this.newUser).subscribe(data => {
+          console.log(data);
+          this.goToUserList();
+        }, error => console.log(error));
     }
   }
 
