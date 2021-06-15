@@ -8,7 +8,7 @@ import { ListUserRoutingModule } from './list-user-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    ListUserRoutingModule
+    ListUserRoutingModule,
   ]
 })
 export class ListUserModule { }

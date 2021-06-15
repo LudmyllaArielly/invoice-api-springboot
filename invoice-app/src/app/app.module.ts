@@ -21,10 +21,7 @@ import { ListUserComponent } from './pages/components/user/list-user/list-user.c
 import { ListUserModule } from './pages/components/user/list-user/list-user.module';
 import { NewUserComponent } from './pages/components/user/new-user/new-user.component';
 import { NewUserModule } from './pages/components/user/new-user/new-user.module';
-
-
-
-
+import { SearchPipe } from './pages/components/user/list-user/Search.pipe';
 
 
 @NgModule({
@@ -38,6 +35,7 @@ import { NewUserModule } from './pages/components/user/new-user/new-user.module'
     UpdateStatusComponent,
     ListUserComponent,
     NewUserComponent,
+    SearchPipe
 
 
   ],
@@ -54,8 +52,8 @@ import { NewUserModule } from './pages/components/user/new-user/new-user.module'
     ReactiveFormsModule,
     NgxPaginationModule ,
     ListUserModule,
-    NewUserModule
- 
+    NewUserModule,
+
   ],
 
   exports: [
