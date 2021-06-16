@@ -1,10 +1,3 @@
-.title-list {
-    margin-top: 5rem;
-    margin-bottom: 1rem;
-    font-size: 2.1rem;
-    font-family: Roboto, sans-serif;
-}
-
 .btn {
     margin-left: 0.5rem;
 }
@@ -12,5 +5,42 @@
 table {
     margin-bottom: 1rem;
 }
+
+.bi-pencil-square {
+    color: #73F8F8;
+}
+
+.bi .bi-x-circle-fill {
+    color: #F46E72;
+}
+
+.groupBtn {
+    a {
+        margin-left: 0.5rem;
+    }
+}
+
+
+
+
+
+/*
+@media screen and (max-width: 1200px) {
+  
+    
+    table {
+        tbody {
+            tr {
+                td.groupBtn {
+                    button {
+                        width: 25%;
+                    }
+                }    
+                
+            }
+        }
+    }
+}
+*/
 
   

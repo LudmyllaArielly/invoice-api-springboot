@@ -4,47 +4,57 @@
         <div class="col-12 btn-new">
             <button type="button" class="btn btn-success"><a routerLink="/new"><i class="bi bi-plus-lg"></i> New Invoice</a></button>
         </div>
-        <table class="table table-hover" *ngIf="getAllInvoices">
-            <thead>
-                <tr>
-                    <th scope="col">Company Name</th>
-                    <th scope="col">Due Date</th>
-                    <th scope="col">Value</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">User Cpf</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Date Of Birth</th>
-                    <th scope="col">Actions</th>
+        <div class="table-responsive-lg">
+            <table class="table table-hover" *ngIf="getAllInvoices">
+                <thead>
+                    <tr>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">User Cpf</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date Of Birth</th>
+                        <th scope="col">Actions</th>
 
 
-                </tr>
-            </thead>
-            <tbody *ngIf="getAllInvoices?.length > 0">
-                <tr class="table-light" *ngFor="let invoice of getAllInvoices | paginate: { itemsPerPage: count, currentPage: page }; let i = index ">
-                     
-                    <td>{{invoice.companyName}}</td>
-                    <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
-                    <td>{{invoice.value | currency}}</td>
-                    <td>{{invoice.status}}</td>
-                    <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
-                    <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
-                    <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+                    </tr>
+                </thead>
+                <tbody *ngIf="getAllInvoices?.length > 0">
+                    <tr class="table-light" *ngFor="let invoice of getAllInvoices | paginate: { itemsPerPage: count, currentPage: page }; let i = index ">
+                        
+                        <td>{{invoice.companyName}}</td>
+                        <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
+                        <td>{{invoice.value | currency}}</td>
+                        <td>{{invoice.status}}</td>
+                        <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
+                        <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
+                        <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
 
-                    <td class="groupBtn">
+                        <td class="groupBtn">
 
-                        <button type="button" class="btn btn-outline-primary"
-                            (click)="editInvoice(invoice.id)"><a ><i class="bi bi-pencil-square"></i></a></button>
-                        <button type="button" class="btn btn-outline-danger"
-                            (click)="deleteInvoice(invoice.id)"><a><i class="bi bi-x-circle-fill"></i></a></button>
-                        <button type="button" class="btn btn-outline-info"
-                            (click)="updateStatusInvoice(invoice.id)">Change status</button>
+                            <a class="btnEdit" (click)="editInvoice(invoice.id)"><i class="bi bi-pencil-square"></i></a>                         
 
-                    </td>
+                            <a class="btnDelete" (click)="deleteInvoice(invoice.id)"><i class="bi bi-x-circle-fill"></i></a>
 
-                </tr>
+                            <a class="btnStatus" (click)="updateStatusInvoice(invoice.id)"><span>Edit status</span></a>
+                            
 
-            </tbody>        
-        </table>
+                            <!--
+                            <button type="button" class="btn btn-outline-primary"
+                                (click)="editInvoice(invoice.id)"><a ><i class="bi bi-pencil-square"></i></a></button>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="deleteInvoice(invoice.id)"><a><i class="bi bi-x-circle-fill"></i></a></button>
+                            <button type="button" class="btn btn-outline-info"
+                                (click)="updateStatusInvoice(invoice.id)">Change status</button>
+                                -->
+                        </td>
+
+                    </tr>
+
+                </tbody>        
+            </table>
+        </div>
     </div>
     <div class="pagination text-right">
         <pagination-controls (pageChange)="page = $event" previousLabel="Prev" nextLabel="Next" responsive="true"></pagination-controls>
