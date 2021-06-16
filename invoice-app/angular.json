@@ -96,7 +96,7 @@
               { 
                 "glob": "_redirects",
                 "input": "src",
-                "output": "/list"
+                "output": "/"
               }
             ],
             "styles": [
