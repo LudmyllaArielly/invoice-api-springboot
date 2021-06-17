@@ -14,23 +14,19 @@
                         <th scope="col">Status</th>
                         <th scope="col">User Cpf</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Date Of Birth</th>
                         <th scope="col">Edit status</th>
                         <th scope="col">Actions</th>
-
 
                     </tr>
                 </thead>
                 <tbody *ngIf="getAllInvoices?.length > 0">
                     <tr class="table-light" *ngFor="let invoice of getAllInvoices | paginate: { itemsPerPage: count, currentPage: page }; let i = index ">
-                        
                         <td>{{invoice.companyName}}</td>
                         <td>{{invoice.dueDate | date:'dd/MM/yyyy' }}</td>
                         <td>{{invoice.value | currency}}</td>
                         <td>{{invoice.status}}</td>
                         <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
                         <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
-                        <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
                         <td><a class="btnStatus" (click)="updateStatusInvoice(invoice.id)"><i class="bi bi-pen"></i></a></td>
                         
                         <td class="groupBtn">

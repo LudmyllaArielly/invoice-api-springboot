@@ -26,9 +26,7 @@
                     <td>{{user.dateOfBirth | date:'dd/MM/yyyy' }}</td>
                    
                     <td class="groupBtn">
-                        <button type="button" class="btn btn-outline-primary"
-                            (click)="editUser(user.id)"><a ><i class="bi bi-pencil-square"></i></a></button>
-                         
+                        <a class="btnEdit" (click)="editUser(user.id)"><i class="bi bi-pencil-square"></i></a> 
                     </td>
 
                 </tr>

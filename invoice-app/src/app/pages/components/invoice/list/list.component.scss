@@ -3,33 +3,41 @@
 }
 
 table {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    justify-content: center;
     margin-bottom: 1rem;
 }
 
+.table-responsive-lg {
+    width: 100%;
+}
+/*
 i.bi-pencil-square {
     color: #7BE2F0;
 }
-
+*/
 i.bi.bi-x-circle-fill {
     color: #F46E72;
 }
 
-i .bi.bi-pen {
+i.bi.bi-pen {
     color: #B39BF1;
     justify-content: center;
-    align-items: center;
+    display: flex;
 }
 
+.table-light {
+    td {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+/*
 .groupBtn {
     a {
         margin-left: 0.5rem;
     }
 }
-
+*/
 
 
 
