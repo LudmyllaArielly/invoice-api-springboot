@@ -30,12 +30,12 @@
             </div>
             <div class="row">
                 <div class="col-6 col-md-6 col-sm-4">
-                    <label for="dateOfBirth">Due date</label>
+                    <label for="dateOfBirth">Date of birth</label>
                     <input type="date" id="dateOfBirth" class="form-control" placeholder="00/00/0000"
                         [(ngModel)]="newUser.dateOfBirth" name="dateOfBirth" #date="ngModel" required 
                         [ngClass]="{'is-invalid': !date.valid && (date.dirty || date.touched || date == null)}"/>
                         <span class="invalid-feedback" *ngIf="date.errors && (date.dirty || date.touched || date == null)">
-                            <span *ngIf="date.errors.required && (invoice.dueDate == null)">
+                            <span *ngIf="date.errors.required && (newUser.dateOfBirth == null)">
                               <p> Date of birth is required</p>
                             </span>
                         </span>
@@ -46,7 +46,7 @@
                         [(ngModel)]="newUser.cpf" name="cpf" #cpfUser="ngModel" required pattern="[0-9]+$" maxlength="11" minlength="11"
                         [ngClass]="{'is-invalid': !cpfUser.valid && (cpfUser.dirty || cpfUser.touched || cpfUser < 11)}"/> 
                         <span class="invalid-feedback" *ngIf="cpfUser.errors && (cpfUser.dirty || cpfUser.touched ||  cpfUser < 11)">
-                            <span *ngIf="cpfUser.errors.required && invoice.userCpfDTO.cpf < 11 ">
+                            <span *ngIf="cpfUser.errors.required && newUser.cpf < 11 ">
                               <p> Cpf of the client is required</p>
                               <p>The cpf must have 11 numbers</p>
                             </span>
