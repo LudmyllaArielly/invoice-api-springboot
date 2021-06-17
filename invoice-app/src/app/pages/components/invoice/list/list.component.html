@@ -15,6 +15,7 @@
                         <th scope="col">User Cpf</th>
                         <th scope="col">Name</th>
                         <th scope="col">Date Of Birth</th>
+                        <th scope="col">Edit status</th>
                         <th scope="col">Actions</th>
 
 
@@ -30,16 +31,12 @@
                         <td>{{invoice.userCreateAndListAllDTO.cpf}}</td>
                         <td>{{invoice.userCreateAndListAllDTO.firstName}} {{invoice.userCreateAndListAllDTO.lastName}}</td>
                         <td>{{invoice.userCreateAndListAllDTO.dateOfBirth | date:'dd/MM/yyyy' }}</td>
-
+                        <td><a class="btnStatus" (click)="updateStatusInvoice(invoice.id)"><i class="bi bi-pen"></i></a></td>
+                        
                         <td class="groupBtn">
-
                             <a class="btnEdit" (click)="editInvoice(invoice.id)"><i class="bi bi-pencil-square"></i></a>                         
-
                             <a class="btnDelete" (click)="deleteInvoice(invoice.id)"><i class="bi bi-x-circle-fill"></i></a>
-
-                            <a class="btnStatus" (click)="updateStatusInvoice(invoice.id)"><span>Edit status</span></a>
                             
-
                             <!--
                             <button type="button" class="btn btn-outline-primary"
                                 (click)="editInvoice(invoice.id)"><a ><i class="bi bi-pencil-square"></i></a></button>
