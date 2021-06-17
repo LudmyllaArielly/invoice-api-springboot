@@ -1,0 +1,21 @@
+.container {
+    .row {
+        flex-direction: row !important;
+        flex: 1 !important;
+        justify-content: center !important;
+    }
+}
+
+.card {
+    margin-top: 2rem !important;
+}
+
+.card-body {
+    margin-bottom: 1.5rem;
+}
+
+.row .col-12 {
+    margin-bottom: 0.5rem; 
+}
+
+

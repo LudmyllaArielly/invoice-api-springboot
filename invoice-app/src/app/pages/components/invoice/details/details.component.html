@@ -1,49 +1,49 @@
 <div class="container">
     <div class="row">
-        <div class="card mx-auto col-6 col-md-6 col-sm-4 col-xs-2" style="width: 40%;margin-top: 5rem;">
-            <div class="card-body">
-                <h4 class="card-title">Invoice Details</h4>
-                <h6 class="card-subtitle mb-2 text-muted">Details</h6>
-
-                <div class="row">
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        Company Name <p class="card-text">{{invoice.companyName}}</p>
+        <div class="card-groupcard-group">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Invoice Details</h5>
+                    <div class="row">
+                        <div class="col">
+                            Company<p class="card-text">{{invoice.companyName}}</p>
+                        </div>
+                        <div class="col">
+                            Due date <p class="card-text">{{invoice.dueDate | date:'dd/MM/yyyy'}}</p>
+                        </div>
+                        
                     </div>
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        Due date <p class="card-text">{{invoice.dueDate | date:'dd/MM/yyyy'}}</p>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            Value <p class="card-text">{{invoice.value | currency }}</p>
+                        </div>
+                        <div class="col">
+                            Status <p class="card-text">{{invoice.status}}</p>
+                        </div>
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        Value <p class="card-text">{{invoice.value | currency }}</p>
-                    </div>
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        Status <p class="card-text">{{invoice.status}}</p>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        User cpf <p class="card-text">{{invoice.userCreateAndListAllDTO.cpf}}</p>
-                    </div>
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        Name <p class="card-text">{{invoice.userCreateAndListAllDTO.firstName}}
-                            {{invoice.userCreateAndListAllDTO.lastName}}</p>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6 col-sm-4 col-xs-2">
-                        Date of Birth: <p class="card-text">{{invoice.userCreateAndListAllDTO.dateOfBirth |
-                            date:'dd/MM/yyyy'}}</p>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            User cpf <p class="card-text">{{invoice.userCreateAndListAllDTO.cpf}}</p>
+                        </div>
+                        <div class="col">
+                            Name <p class="card-text">{{invoice.userCreateAndListAllDTO.firstName}}
+                                {{invoice.userCreateAndListAllDTO.lastName}}</p>
+                        </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-danger" style="margin-left: 7rem;"
-                    (click)="deleteInvoice(invoice.id)">Delete</button>
-
-                <button type="button" class="btn btn-secondary" style="margin-left: 2rem;" routerLink="/list">Go to
-                    Back</button>
+                    <div class="row col-12">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-danger" style="margin-left: 7rem;"
+                            (click)="deleteInvoice(invoice.id)">Delete</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-secondary" style="margin-left: 2rem;" routerLink="/list">Go to
+                                 Back</button>
+                        </div>
+                    </div>
+                
             </div>
         </div>
     </div>
