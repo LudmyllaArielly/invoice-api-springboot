@@ -1,40 +1,40 @@
 <div class="container">
     <div class="row">
-        <div class="card mx-auto" style="width: 40%;margin-top: 5rem;">
+        <div class="card mx-auto col-6 col-md-6 col-sm-4 col-xs-2" style="width: 40%;margin-top: 5rem;">
             <div class="card-body">
                 <h4 class="card-title">Invoice Details</h4>
                 <h6 class="card-subtitle mb-2 text-muted">Details</h6>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         Company Name <p class="card-text">{{invoice.companyName}}</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         Due date <p class="card-text">{{invoice.dueDate | date:'dd/MM/yyyy'}}</p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         Value <p class="card-text">{{invoice.value | currency }}</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         Status <p class="card-text">{{invoice.status}}</p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         User cpf <p class="card-text">{{invoice.userCreateAndListAllDTO.cpf}}</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         Name <p class="card-text">{{invoice.userCreateAndListAllDTO.firstName}}
                             {{invoice.userCreateAndListAllDTO.lastName}}</p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-4 col-xs-2">
                         Date of Birth: <p class="card-text">{{invoice.userCreateAndListAllDTO.dateOfBirth |
                             date:'dd/MM/yyyy'}}</p>
                     </div>

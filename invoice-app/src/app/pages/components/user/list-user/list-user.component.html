@@ -1,9 +1,10 @@
 <div class="container">
     <div class="row">
         <strong class="title-list mx-auto">User List</strong>
-            <div class="col-12 btn-new">
-                <button type="button" class="btn btn-success" routerLink="/newUser"><a><i class="bi bi-plus-lg"></i> New user</a></button>
-            </div>
+        <div class="w-100"></div>
+        <div class="col-12 btn-new">
+            <button type="button" class="btn"><a routerLink="/newUser"><i class="bi bi-plus-circle-fill"></i> New</a></button>
+        </div>
         <div class="table-responsive-lg">
             <table class="table table-hover" *ngIf="listAllUser">
                 <thead>

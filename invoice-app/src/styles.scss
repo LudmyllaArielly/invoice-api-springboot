@@ -25,11 +25,16 @@ strong.title-list.mx-auto {
    color: #161414;
 }
 
+.btn {
+    margin-left: 0.5rem;
+}
+
 .btn-new{
     padding: 0;
     margin: 0;
 
     button {
+        background-color: #72CA24;
         margin-bottom: 1.2rem;
         border-radius: 0.5rem;
         transition: all 0.3s;
@@ -43,9 +48,12 @@ strong.title-list.mx-auto {
 
 .btn-new:hover {
     button {
-        background-color: #009933;
-        opacity: 0.5;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
     }
+}
+
+table {
+    margin-bottom: 1rem;
 }
 
 .table-responsive-lg {
@@ -59,5 +67,23 @@ i.bi-pencil-square {
 .groupBtn {
     a {
         margin-left: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .btn-new{
+        button {
+            width: 15%;
+            font-size: 0.7rem;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .btn-new{
+        button {
+            width: 20%;
+            font-size: 0.7rem;
+        }
     }
 }
