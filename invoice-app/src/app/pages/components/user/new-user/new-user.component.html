@@ -4,7 +4,7 @@
         <strong *ngIf="newUser.id == null" class="title-list mx-auto">New User</strong>
         <form class="col-md-12 mt-5" (ngSubmit)="onSubmit()" #myForm="ngForm">
             <div class="row">
-                <div class="col">
+                <div class="col-6 col-md-6 col-sm-4">
                     <label for="firstName">Fist Name</label>
                     <input type="text" id="firstName" class="form-control" placeholder="First Name"
                         [(ngModel)]="newUser.firstName" name="firstName" maxlength="50" minlength="3"
@@ -15,7 +15,7 @@
                             </span>
                         </span>
                 </div>
-                <div class="col">
+                <div class="col-6 col-md-6 col-sm-4">
                     <label for="lastName">Last Name</label>
                     <input type="text" id="lastName" class="form-control" placeholder="Last Name"
                         [(ngModel)]="newUser.lastName" name="lastName" maxlength="50" minlength="3"
@@ -29,7 +29,7 @@
                
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-6 col-md-6 col-sm-4">
                     <label for="dateOfBirth">Due date</label>
                     <input type="date" id="dateOfBirth" class="form-control" placeholder="00/00/0000"
                         [(ngModel)]="newUser.dateOfBirth" name="dateOfBirth" #date="ngModel" required 
@@ -40,7 +40,7 @@
                             </span>
                         </span>
                 </div>
-                <div class="col-6">
+                <div class="col-6 col-md-6 col-sm-4">
                     <label for="cpf">Cpf User</label>
                     <input type="text" id="cpf" class="form-control" placeholder="99999999999"
                         [(ngModel)]="newUser.cpf" name="cpf" #cpfUser="ngModel" required pattern="[0-9]+$" maxlength="11" minlength="11"

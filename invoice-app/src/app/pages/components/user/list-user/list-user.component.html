@@ -4,35 +4,36 @@
             <div class="col-12 btn-new">
                 <button type="button" class="btn btn-success" routerLink="/newUser"><a><i class="bi bi-plus-lg"></i> New user</a></button>
             </div>
-          
-        <table class="table table-hover" *ngIf="listAllUser">
-            <thead>
-                <tr>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Cpf</th>
-                    <th scope="col">DateOfBirth</th>
-                    <th scope="col">Actions</th>
+        <div class="table-responsive-lg">
+            <table class="table table-hover" *ngIf="listAllUser">
+                <thead>
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Cpf</th>
+                        <th scope="col">DateOfBirth</th>
+                        <th scope="col">Actions</th>
 
 
-                </tr>
-            </thead>
-            <tbody *ngIf="listAllUser?.length > 0">
-                <tr class="table-light" *ngFor="let user of listAllUser | paginate: { itemsPerPage: count, currentPage: page }; let i = index ">
+                    </tr>
+                </thead>
+                <tbody *ngIf="listAllUser?.length > 0">
+                    <tr class="table-light" *ngFor="let user of listAllUser | paginate: { itemsPerPage: count, currentPage: page }; let i = index ">
+                        
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.cpf}}</td>
+                        <td>{{user.dateOfBirth | date:'dd/MM/yyyy' }}</td>
                     
-                    <td>{{user.firstName}}</td>
-                    <td>{{user.lastName}}</td>
-                    <td>{{user.cpf}}</td>
-                    <td>{{user.dateOfBirth | date:'dd/MM/yyyy' }}</td>
-                   
-                    <td class="groupBtn">
-                        <a class="btnEdit" (click)="editUser(user.id)"><i class="bi bi-pencil-square"></i></a> 
-                    </td>
+                        <td class="groupBtn">
+                            <a class="btnEdit" (click)="editUser(user.id)"><i class="bi bi-pencil-square"></i></a> 
+                        </td>
 
-                </tr>
+                    </tr>
 
-            </tbody>        
-        </table>
+                </tbody>        
+            </table>
+        </div>
     </div>
     <div class="pagination text-right">
         <pagination-controls (pageChange)="page = $event" previousLabel="Prev" nextLabel="Next" responsive="true"></pagination-controls>
