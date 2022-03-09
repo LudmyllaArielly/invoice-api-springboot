@@ -170,7 +170,7 @@ Nosso servidor de aplicativos backend é um aplicativo NodeJS que depende de alg
   
 ### Execute a aplicação
 
-- Se você tiver i yarn instalado
+- Se você tiver yarn instalado
  - yarn start
 - Npm
  - npm start
