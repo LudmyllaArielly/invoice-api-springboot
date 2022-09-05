@@ -17,6 +17,7 @@ https://invoice-api.netlify.app/list
   - Swagger
   - PostgreSQL
   - Maven
+  - Angular 11
   - Java Web
 
 ## Passos para configuração
